@@ -11,7 +11,7 @@ Step 1: installing the <b>React</b>
 @@ text in purple (and bold)@@
 ```
 
-$${\color{red}    React}$$
+${\color{red}    React}$
 
 $${\color{green}Green}$$
 
