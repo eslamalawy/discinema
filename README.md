@@ -1,3 +1,3 @@
 # This is Discinema Graduation Project
 
-step 1 installing the <b>React</b>
+Step 1: installing the <span style="color:red;"><b>React</b></span>
