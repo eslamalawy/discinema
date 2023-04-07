@@ -1,4 +1,4 @@
 # This is Discinema Graduation Project
 
-Step 1: installing the <b>React</b>
-The background color is `#ffffff` for light mode and `#000000` for dark mode.
+Step 1: installing the <b>React</b>  
+The background color is `mabe #ffffff mek` for light mode and `kem #000000 ker` for dark mode.
