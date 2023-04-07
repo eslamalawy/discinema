@@ -37,3 +37,8 @@ $\Large{hello}$$   #Bigger text size
 $$\LaTeX$$
 
 
+> __Note__ 
+this is my note 
+
+> __Warning__
+this is my warning
