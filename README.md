@@ -11,7 +11,6 @@ Step 1: installing the <b>React</b>
 @@ text in purple (and bold)@@
 ```
 
-[#f03c15]type your text
-
+<p style='color:red'>This is some red text.</p>
 
 - ![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) `#1589F0`
