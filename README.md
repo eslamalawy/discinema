@@ -10,6 +10,7 @@ Step 1: installing the <b>React</b>
 @@ text in purple (and bold)@@
 ```
 
-- ![#f03c15](klam) `#f03c15`
-- ![#c5f015] Me `#c5f015`
+`#f03c15` type your text `#f03c15`
+
+
 - ![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) `#1589F0`
