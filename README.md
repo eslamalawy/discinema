@@ -3,7 +3,7 @@
 Step 1: installing the <b>React</b>   
 
 ```diff
-hello i'm here just to say we are gonna do it red
+- hello i'm here just to say we are gonna do it red
 - text in red
 + text in green
 ! text in orange
