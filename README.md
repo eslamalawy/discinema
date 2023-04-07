@@ -11,11 +11,9 @@ Step 1: installing the <b>React</b>
 @@ text in purple (and bold)@@
 ```
 
-React
+$${\color{red}    React}$$
 
 $${\color{green}Green}$$
-
-- ![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) `#1589F0`
 
 
 $\mathcal{\color{purple}{this \ is \ a \ paragraph} \ \color{cyan}{in \ another \ font}}$
