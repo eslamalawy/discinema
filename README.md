@@ -42,3 +42,6 @@ this is my note
 
 > __Warning__
 this is my warning
+
+> __Success__
+this is my success
