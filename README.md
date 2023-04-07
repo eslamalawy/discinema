@@ -3,6 +3,7 @@
 Step 1: installing the <b>React</b>   
 
 ```diff
+hello i'm here just to say we are gonna do it red
 - text in red
 + text in green
 ! text in orange
@@ -10,7 +11,7 @@ Step 1: installing the <b>React</b>
 @@ text in purple (and bold)@@
 ```
 
-`#f03c15` type your text `#f03c15`
+[#f03c15]type your text
 
 
 - ![#1589F0](https://placehold.co/15x15/1589F0/1589F0.png) `#1589F0`
