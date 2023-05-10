@@ -1,5 +1,5 @@
 import { Route, Routes, Navigate } from "react-router-dom";
-import MyNavbar from "./components/MyNavbar";
+import MyNavbar from "./layouts/NavBar/MyNavbar";
 import Footer from "./components/Footer";
 
 function App() {
