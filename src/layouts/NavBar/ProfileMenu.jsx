@@ -53,6 +53,9 @@ export default function ProfileMenu() {
           color="blue-gray"
           className="flex items-center gap-1 rounded-full py-0.5 pr-2 pl-0.5 lg:ml-auto"
         >
+
+          {/* {true? (<p>yes</p>) : (<p>no</p>)} */}
+          
           <Avatar
             variant="circular"
             size="sm"
@@ -60,6 +63,21 @@ export default function ProfileMenu() {
             className="border border-blue-500 p-0.5"
             src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
           />
+          {/* <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            strokeWidth={1.5}
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
+            />
+          </svg> */}
+
           <ChevronDownIcon
             strokeWidth={2.5}
             className={`h-3 w-3 transition-transform ${

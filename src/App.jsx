@@ -1,13 +1,15 @@
 import { Route, Routes, Navigate } from "react-router-dom";
 import MyNavbar from "./layouts/NavBar/MyNavbar";
 import Footer from "./layouts/Footer";
+import Example from "./components/Example";
 
 function App() {
   return (
     <div className="flex flex-col h-screen">
        <MyNavbar />
       <h1 className="text-7xl mr-0 text-green-700">Hello TailWend CSS</h1>
-      <Footer/>
+        <Example/>
+        <Footer/>
     </div>
   );
 }
