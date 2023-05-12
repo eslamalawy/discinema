@@ -5,3 +5,7 @@
 *{
     box-sizing: border-box;
 }
+.erc-footer{
+    /*23252b   old: 213944  */
+    background: #000 linear-gradient(180deg,#0000,#1a0e22);
+}
