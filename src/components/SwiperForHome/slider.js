@@ -21,7 +21,7 @@ export const Slider = ({ slides }) => {
         clickable: true,
         dynamicBullets: true,
       }}
-      scrollbar={{ draggable: true }}
+      scrollbar={{ draggable: true, snapOnRelease: true }}
       onSlideChange={() => console.log("slide change")}
       onSwiper={(swiper) => console.log(swiper)}
       effect={"cube"}
@@ -34,6 +34,9 @@ export const Slider = ({ slides }) => {
     >
       {slides.map((slide) => (
         <SwiperSlide key={slide.image}>
+          <div className="swiper-inside-container">
+            <p>{slide.subTitle}</p>
+          </div>
           <img src={slide.image} alt={slide.title} />
         </SwiperSlide>
       ))}

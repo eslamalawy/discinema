@@ -1,6 +1,9 @@
+/* place the arrows down */
 .swiper-button-next, .swiper-button-prev{
     top:90%;
 }
+
+/* custom pagination */
 .swiper-pagination {
 	position: absolute;
 	top: 90%;
@@ -22,4 +25,12 @@
 .swiper-pagination-bullet-active {
 	color:#fff;
 	background: #007aff;
+}
+
+/* text on the slide */
+.swiper-slide .swiper-inside-container{
+	position: absolute;
+	z-index: 2;
+	top:10%;
+	left:2%;
 }
