@@ -33,11 +33,24 @@ const navListMenuItems = [
 
 export default function NavListMenu() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-
+  
   const triggers = {
-    onMouseEnter: () => setIsMenuOpen(true),
-    onMouseLeave: () => setIsMenuOpen(false),
+    onClick: () => {
+      setIsMenuOpen(true);
+    },
   };
+
+  React.useEffect(() => {
+    let my_overlay =document.getElementById("overlay-elements");
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+      my_overlay.classList.remove("hidden");
+    } else {
+      setIsMenuOpen(false);
+      document.body.style.overflow = "";
+      my_overlay.classList.add("hidden");
+    }
+  }, [isMenuOpen]);
 
   const renderItems = navListMenuItems.map(({ title, description }) => (
     <a href="#" key={title}>
@@ -88,6 +101,7 @@ export default function NavListMenu() {
           </ul>
         </MenuList>
       </Menu>
+      {/* mobile view --- view */}
       <MenuItem className="flex items-center gap-2 text-blue-gray-900 lg:hidden">
         <Square3Stack3DIcon className="h-[18px] w-[18px]" /> Pages{" "}
       </MenuItem>
