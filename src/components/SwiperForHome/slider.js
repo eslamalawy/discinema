@@ -1,15 +1,26 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Scrollbar, A11y, EffectCube } from "swiper";
 import "swiper/swiper-bundle.min.css";
-import "./slider.css"
+import "./slider.css";
 export const Slider = ({ slides }) => {
+  const renderBullet = (index, className) => {
+    const slideTitle = slides[index].title;
+    return `<span class="${className}">${slideTitle}</span>`;
+  };
+
   return (
-    <Swiper className="w-full h-screen"
+    <Swiper
+      className="w-full h-screen"
       modules={[Navigation, Pagination, Scrollbar, A11y, EffectCube]}
       spaceBetween={50}
       slidesPerView={3}
-      navigation = {{}}
-      pagination={{ clickable: true, dynamicBullets: true}}
+      navigation={{}}
+      pagination={{
+        el: ".swiper-pagination",
+        renderBullet,
+        clickable: true,
+        dynamicBullets: true,
+      }}
       scrollbar={{ draggable: true }}
       onSlideChange={() => console.log("slide change")}
       onSwiper={(swiper) => console.log(swiper)}
@@ -26,6 +37,9 @@ export const Slider = ({ slides }) => {
           <img src={slide.image} alt={slide.title} />
         </SwiperSlide>
       ))}
+
+      {/* <!-- Add Pagination --> */}
+      <div class="swiper-pagination"></div>
     </Swiper>
   );
 };
