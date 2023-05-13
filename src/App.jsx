@@ -6,11 +6,15 @@ import Example from "./components/Example";
 function App() {
   return (
     <div className="flex flex-col h-screen">
-       <MyNavbar />
-       <div id="overlay-elements" className=" fixed overflow-hidden z-10 bg-gray-900 bg-opacity-[0.65] inset-0 transform ease-in-out hidden"></div>
+      <MyNavbar />
+      <div
+        id="overlay-elements"
+        className=" fixed overflow-hidden z-10 bg-gray-900 bg-opacity-[0.65] inset-0 transform ease-in-out hidden"
+      ></div>
+      <div className="pt-[3.5rem]"></div>
       <h1 className="text-7xl mr-0 text-green-700">Hello TailWend CSS</h1>
-        <Example/>
-        <Footer/>
+      <Example />
+      <Footer />
     </div>
   );
 }

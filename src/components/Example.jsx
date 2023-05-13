@@ -30,6 +30,18 @@ export default function Example() {
         <div className="text-6xl">{"🐝"}</div>
         <div className="text-6xl">{"🦄"}</div>
         <div className="text-6xl">{"🐌"}</div>
+                <div className="text-6xl">{"🦙"}</div>
+        <div className="text-6xl">{"🐝"}</div>
+        <div className="text-6xl">{"🦄"}</div>
+        <div className="text-6xl">{"🐌"}</div>
+        <div className="text-6xl">{"🦙"}</div>
+        <div className="text-6xl">{"🐝"}</div>
+        <div className="text-6xl">{"🦄"}</div>
+        <div className="text-6xl">{"🐌"}</div>
+        <div className="text-6xl">{"🦙"}</div>
+        <div className="text-6xl">{"🐝"}</div>
+        <div className="text-6xl">{"🦄"}</div>
+        <div className="text-6xl">{"🐌"}</div>
       </section>
       <Drawer isOpen={isOpen} setIsOpen={setIsOpen}>
         <div>inside this drawer</div>

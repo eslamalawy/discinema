@@ -23,7 +23,7 @@ export default function MyNavbar() {
   }, []);
 
   return (
-    <Navbar className="border-none rounded-none max-w-full bg-[#23252b;] mx-auto p-2 lg:pl-6 text-white">
+    <Navbar className="border-none rounded-none max-w-full bg-[#23252b;] mx-auto p-2 lg:pl-6 text-white fixed">
       <div className="relative mx-auto flex items-center ">
         <IconButton
           size="sm"
