@@ -1,7 +1,9 @@
 import { Route, Routes, Navigate } from "react-router-dom";
 import MyNavbar from "./layouts/NavBar/MyNavbar";
 import Footer from "./layouts/Footer";
-import Example from "./components/Example";
+import Example from "./components/Drawer/Example";
+import { Slider } from "./components/SwiperForHome/slider";
+import slides from "./components/SwiperForHome/mock.json"
 
 function App() {
   return (
@@ -12,6 +14,7 @@ function App() {
         className=" fixed overflow-hidden z-10 bg-gray-900 bg-opacity-[0.65] inset-0 transform ease-in-out hidden"
       ></div>
       <div className="pt-[3.5rem]"></div>
+      <Slider slides={slides}/>
       <h1 className="text-7xl mr-0 text-green-700">Hello TailWend CSS</h1>
       <Example />
       <Footer />

@@ -3,6 +3,6 @@ import { MainContext } from './MainContext'
 
 export default function MainProvider(props) {
   return (
-    <MainContext.Provider >{props.children}</MainContext.Provider>
+    <MainContext.Provider value={""}>{props.children}</MainContext.Provider>
   )
 }
