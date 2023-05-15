@@ -4,6 +4,7 @@ import Footer from "./layouts/Footer";
 import Example from "./components/Drawer/Example";
 import { Slider } from "./components/SwiperForHome/slider";
 import slides from "./components/SwiperForHome/mock.json"
+import {SamVid} from "./components/SampleVideojs/Sample";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <div className="pt-[3.5rem]"></div>
       <Slider slides={slides}/>
       <h1 className="text-7xl mr-0 text-green-700">Hello TailWend CSS</h1>
+      <SamVid />
       <Example />
       <Footer />
     </div>
