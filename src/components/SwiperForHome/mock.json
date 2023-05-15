@@ -1,25 +1,33 @@
 [
   {
-    "image": "https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/8I37NtDffNV7AZlDa7uDvvqhovU.jpg",
+    "image": "https://shahid.mbc.net/_next/image?url=https%3A%2F%2Fshahid.mbc.net%2FmediaObject%2FCuration_2023%2FHero%2FMAY%2Falle3ba_s4_Thump_Hero_en%2Foriginal%2Falle3ba_s4_Thump_Hero_en.jpg%3Fheight%3D612%26width%3D1088%26croppingPoint%3D%26version%3D1%26type%3Dwebp&w=1280&q=75",
     "title": "Avatar: The Way of Water",
     "subTitle": "Set more than a decade after the events of the first film",
+    "biglogo": "https://shahid.mbc.net/mediaObject/2023/Amjad/Feb/ramadan-2023/Logo_Al_Leiba_S4/original/Logo_Al_Leiba_S4.png?height=&width=345&croppingPoint=mc&version=1&type=webp",
+    "smalllogo": "https://shahid.mbc.net/mediaObject/2023/Amjad/Feb/ramadan-2023/Logo_Al_Leiba_S4/original/Logo_Al_Leiba_S4.png?height=80&width=&croppingPoint=mc&version=1&type=webp",
     "interval": 1500
   },
   {
-    "image": "https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/bQXAqRx2Fgc46uCVWgoPz5L5Dtr.jpg",
+    "image": "https://shahid.mbc.net/_next/image?url=https%3A%2F%2Fshahid.mbc.net%2FmediaObject%2FCuration_2023%2FHero%2FMAY%2Falthmn2_Thump_Hero_en%2Foriginal%2Falthmn2_Thump_Hero_en.jpg%3Fheight%3D612%26width%3D1088%26croppingPoint%3D%26version%3D1%26type%3Dwebp&w=1280&q=75",
     "title": "Black Adam",
-    "subTitle": "Nearly 5,000 years after he was bestowed with the almighty powers of the Egyptian gods—and imprisoned just as quickly—Black Adam is freed from his earthly tomb, ready to unleash his unique form of justice on the modern world.",
+    "subTitle": "Egyptian Adam is freed from his earthly tomb, ready to unleash his unique form of justice on the modern world.",
+    "biglogo": "https://shahid.mbc.net/mediaObject/2023/Bedour/Althman_Logo_EN/original/Althman_Logo_EN.png?height=&width=345&croppingPoint=mc&version=1&type=webp",
+    "smalllogo": "https://shahid.mbc.net/mediaObject/2023/Bedour/Althman_Logo_EN/original/Althman_Logo_EN.png?height=80&width=&croppingPoint=mc&version=1&type=webp",
     "interval": 500
   },
   {
-    "image": "https://www.themoviedb.org/t/p/w1920_and_h800_multi_faces/yYrvN5WFeGYjJnRzhY0QXuo4Isw.jpg",
+    "image": "https://shahid.mbc.net/_next/image?url=https%3A%2F%2Fshahid.mbc.net%2FmediaObject%2FCuration_2023%2FHero%2FMAY%2Ffamily_aile_Thump_Hero_en%2Foriginal%2Ffamily_aile_Thump_Hero_en.jpg%3Fheight%3D612%26width%3D1088%26croppingPoint%3D%26version%3D1%26type%3Dwebp&w=1280&q=75",
     "title": "Black Panther: Wakanda Forever",
-    "subTitle": "nation from intervening world powers in the wake of King T’Challa’s death. As the Wakandans strive to embrace their next chapter, the heroes must band together",
+    "subTitle": "nation from intervening world powers in the wake of King to embrace their next chapter, the heroes must band together",
+    "biglogo": "https://shahid.mbc.net/mediaObject/2023/AmrAhmed/Feb/LogoEN_FAMILY/original/LogoEN_FAMILY.png?height=&width=345&croppingPoint=mc&version=1&type=webp",
+    "smalllogo": "https://shahid.mbc.net/mediaObject/2023/AmrAhmed/Feb/LogoEN_FAMILY/original/LogoEN_FAMILY.png?height=80&width=&croppingPoint=mc&version=1&type=webp",
     "interval": 2500
   },
   {
     "image": "https://shahid.mbc.net/mediaObject/Curation_2023/Hero/MAY/ENG_Mommies_Group_Hero_ENG/original/ENG_Mommies_Group_Hero_ENG.jpg?height=720&amp;width=1280&amp;croppingPoint=tc&amp;version=1&amp;type=webp",
     "title": "الماميز",
+    "biglogo": "https://shahid.mbc.net/mediaObject/2023/AmrAhmed/Ramadan/Logo_Mommies_Group/original/Logo_Mommies_Group.png?height=&width=345&croppingPoint=mc&version=1&type=webp",
+    "smalllogo": "https://shahid.mbc.net/mediaObject/2023/AmrAhmed/Ramadan/Logo_Mommies_Group/original/Logo_Mommies_Group.png?height=80&width=&croppingPoint=mc&version=1&type=webp",
     "subTitle": "Queen Ramonda, Shuri, M’Baku, Okoye and the Dora Milaje fight to protect their nation from intervening world",
     "interval": 2500
   }

@@ -1,12 +1,16 @@
+.swiper-scrollbar-drag {
+	background: #da0e5c4f;
+}
 /* place the arrows down */
 .swiper-button-next, .swiper-button-prev{
     top:90%;
+	color: #da0e5c;
 }
 
 /* custom pagination */
 .swiper-pagination {
 	position: absolute;
-	top: 90%;
+	top: 85%;
 	width: auto !important;
 	margin: 0;
 }
@@ -18,14 +22,14 @@
 	text-align: center;
 	line-height: 30px;
 	font-size: 12px;
-	color:#000;
+	/* color:#000; */
 	opacity: 1;
-	background: rgba(0,0,0,0.2);
+	background: rgba(0,0,0,0.0);
 }
-.swiper-pagination-bullet-active {
+/* .swiper-pagination-bullet-active {
 	color:#fff;
 	background: #007aff;
-}
+} */
 
 /* text on the slide */
 .swiper-slide .swiper-inside-container{
@@ -34,3 +38,93 @@
 	top:10%;
 	left:2%;
 }
+
+.swiper-slide .swiper-inside-container-left{
+	position: absolute;
+	z-index: 2;
+	top:10%;
+	right: 0.8%;
+}
+
+.trans-all{
+	transition: all .7s ease-in-out;
+}
+  
+/* media query for small logo and navigation size */
+@media (min-width: 0px) and (max-width: 399px) { 
+	.swiper-pagination {
+		top: 68%;
+	}
+
+	.swiper-pagination img{
+		width: 2.5rem;
+	}
+
+	.swiper-button-next, .swiper-button-prev{
+		top: 80%;
+		--swiper-navigation-size: 25px;
+	}
+
+	.swiper-inside-container p, .swiper-inside-container img{
+		display: none;
+	}
+
+	.swiper-inside-container button{
+		font-size: 0.6rem;
+	}
+
+	.swiper-inside-container-left button{
+		padding: 1px;
+	}
+}
+
+@media (min-width: 400px) and (max-width: 639px) { 
+	.swiper-pagination {
+		top: 70%;
+	}
+
+	.swiper-pagination img{
+		width: 3.5rem;
+	}
+
+	.swiper-button-next, .swiper-button-prev{
+		top: 80%;
+		--swiper-navigation-size: 30px;
+	}
+	.swiper-inside-container p, .swiper-inside-container img{
+		display: none;
+	}
+
+	.swiper-inside-container-left button{
+		padding: 1px;
+	}
+}
+
+@media (min-width: 640px) and (max-width: 767px) { 
+	.swiper-pagination {
+		top: 75%;
+	}
+
+	.swiper-pagination img{
+		width: 4.5rem;
+	}
+
+	.swiper-button-next, .swiper-button-prev{
+		top: 80%;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 1024px) { 
+	.swiper-pagination {
+		top: 75%;
+	}
+
+	.swiper-pagination img{
+		width: 5.5rem;
+	}
+
+	.swiper-button-next, .swiper-button-prev{
+		top: 80%;
+	}
+}
+
