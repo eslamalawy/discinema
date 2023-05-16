@@ -56,11 +56,11 @@ export const Slider = ({ slides }) => {
       let videoPlayStatus = VIDEO_PLAYING_STATE.PAUSE;
       let timeout = null;
       let new_timeout = null;
+      let done_change = false;
       const waiting = 3000;
 
       swiperInstance.on("reachBeginning", function () {
         console.log("this2 first slide");
-        
       });
 
       // swiperInstance.on("beforeSlideChangeStart", function () {
@@ -83,8 +83,9 @@ export const Slider = ({ slides }) => {
 
       // });
 
-      swiperInstance.on("slideChange", function () {
-        console.log("wallhiiiiiiiiiiiiiiiiiiiiiiiii slide changed");
+
+
+      const handelSlideOnChange = () =>{
         $("div#bannervideo").hide();
         $("img#bannerimg").show();
 
@@ -164,13 +165,21 @@ export const Slider = ({ slides }) => {
             }
           }, waiting);
         }
-
         runNext();
-      });
+      }
+
+      if (swiperInstance.activeIndex == 0 && !done_change) {
+        //fire the event of slideChange once
+        console.log("im here on slide one haha");
+        let x = handelSlideOnChange();
+        done_change = true;
+      }
+
+      swiperInstance.on("slideChange", handelSlideOnChange);
 
       swiperInstance.on("reachEnd", function () {
         console.log("this2 last slide");
-        //swiperInstance.autoplay.stop();
+        
       });
     }
   }, [swiperRef]);
@@ -180,7 +189,7 @@ export const Slider = ({ slides }) => {
     const players = videojs.getAllPlayers();
     const activeIndex = swiperRef.current.swiper.activeIndex;
     const activePlayer = players[activeIndex];
-    let old_time =  activePlayer.currentTime();
+    let old_time = activePlayer.currentTime();
     players.map((player, index) => {
       player.hide();
       player.muted(!isMutedClicked);
@@ -201,7 +210,6 @@ export const Slider = ({ slides }) => {
       // if (activePlayer.paused() && !isMutedClicked) {
       //   activePlayer.play();
       // }
-
     });
   }, [isMutedClicked]);
 
@@ -233,6 +241,7 @@ export const Slider = ({ slides }) => {
       slidesPerView={3}
       navigation={{}}
       speed={500}
+      rewind={{}}
       pagination={{
         el: ".swiper-pagination",
         renderBullet,
