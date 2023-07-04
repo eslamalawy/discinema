@@ -31,15 +31,13 @@ export const SliderVideo = ({ slides }) => {
   const [isMutedClicked, setIsMutedClicked] = useState(false);
   const toggleIsMutedClicked = () => setIsMutedClicked((val) => !val);
   const btn_mute = () => {
-    console.log("btn mute clicked");
+    //console.log("btn mute clicked");
     toggleIsMutedClicked();
   };
 
   // watch handeling
   const btn_watch = () => {
-    console.log("btn watch clicked");
-    // VideoPlayer.currentTime(0);
-    // VideoPlayer.pause();
+    //console.log("btn watch clicked");
   };
 
   //handel video showing
