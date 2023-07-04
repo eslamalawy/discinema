@@ -1,10 +1,8 @@
 import { Route, Routes, Navigate } from "react-router-dom";
 import MyNavbar from "./layouts/NavBar/MyNavbar";
 import Footer from "./layouts/Footer";
-import Example from "./components/Drawer/Example";
-import slides from "./components/SwiperForHome/mock.json"
-import { SliderVideo } from "./components/SwiperForHome/slidervideo";
-
+import Home from "./pages/Home";
+import ErrorPage from "./pages/ErrorPage";
 
 function App() {
   return (
@@ -14,11 +12,12 @@ function App() {
         id="overlay-elements"
         className=" fixed overflow-hidden z-10 bg-gray-900 bg-opacity-[0.65] inset-0 transform ease-in-out hidden"
       ></div>
-      {/* <div className="pt-[3.5rem]"></div> */}
-      <SliderVideo slides={slides}/>
-      <h1 className="text-7xl mr-0 text-green-700">Hello TailWend CSS</h1>
+        <Routes>
+          <Route path="home" element={<Home />} />
+          <Route path="/" element={<Navigate to="/home" />} />
+          <Route path="*" element={<ErrorPage />} />
+        </Routes>
 
-      <Example />
       <Footer />
     </div>
   );

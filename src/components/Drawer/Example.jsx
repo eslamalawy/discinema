@@ -5,7 +5,7 @@ export default function Example() {
   const [isOpen, setIsOpen] = React.useState(false);
 
   return (
-    <main className="">
+    <main className="d-block">
       <button
         className="bg-green-600 text-white rounded px-4 py-1"
         onClick={() => setIsOpen(true)}

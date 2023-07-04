@@ -1,20 +1,4 @@
 import React from "react";
-
-// export default function Footer() {
-//   return (
-//     <div className='mt-auto'>
-
-//       <div className='border-[.0625rem] border-solid border-b-[#4a4e58]'>
-//       this is my footer it's just temporary one
-//       </div>
-
-//       <div>
-//         other content
-//       </div>
-//     </div>
-//   )
-// }
-
 import { Typography } from "@material-tailwind/react";
 
 const SITEMAP = [
