@@ -9,7 +9,7 @@ export const SamVid = ({vSrc,vType}) => {
     // autoplay: 'muted',
     //controls: true,
     responsive: true,
-    fluid: true,
+    // fluid: true,
     sources: [
       {
         src: vSrc,

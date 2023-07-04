@@ -61,6 +61,9 @@
   animation: fade 1s;
 }
 
+.bannerHovered {
+  opacity: 1;
+}
 
 /* videojs */
 .video-js {
@@ -73,6 +76,10 @@
 }
 .video-js .vjs-loading-spinner{
   display: none !important;
+}
+
+.video-js .vjs-tech {
+  object-fit: cover;
 }
 
 /* media query for small logo and navigation size */
