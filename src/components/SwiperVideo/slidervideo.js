@@ -81,7 +81,7 @@ export const SliderVideo = ({ slides }) => {
 
     // Pause the player when the user scrolls
     $(window).on("scroll", function () {
-      if (this.scrollY == 0) {
+      if (this.scrollY === 0) {
         $(".navBar-itm").addClass("opacity-[0.5]");
         players.map((player, index) => {
           player.pause();
@@ -202,7 +202,7 @@ export const SliderVideo = ({ slides }) => {
         });
       });
 
-      if (swiperInstance.activeIndex == 0 && !done_change) {
+      if (swiperInstance.activeIndex === 0 && !done_change) {
         //fire the event of slideChange once
         //console.log("im here on slide one");
         handelSlideOnChange(
@@ -262,7 +262,7 @@ export const SliderVideo = ({ slides }) => {
   return (
     <Swiper
       ref={swiperRef}
-      className="w-full h-full erc-footer"
+      className="swiperVideo w-full h-full erc-footer"
       modules={[Navigation, Pagination, Scrollbar, A11y, EffectCube, Autoplay]}
       spaceBetween={50}
       slidesPerView={3}

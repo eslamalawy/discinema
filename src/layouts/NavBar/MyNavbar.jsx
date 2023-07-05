@@ -1,6 +1,7 @@
 import React from "react";
 import ProfileMenu from "./ProfileMenu";
 import NavList from "./NavList";
+import $ from 'jquery';
 
 import {
   Navbar,
@@ -20,10 +21,23 @@ export default function MyNavbar() {
       "resize",
       () => window.innerWidth >= 960 && setIsNavOpen(false)
     );
+
+    // Check if .swiperVideo class exists in the document
+    const swiperVideoExists = $(".swiperVideo").length > 0;
+
+    // Add or remove the opacity class based on the presence of .swiperVideo
+    const navbarElement = $(".navBar-itm");
+    if (navbarElement.length > 0) {
+      if (swiperVideoExists) {
+        navbarElement.addClass("opacity-[0.5]");
+      } else {
+        navbarElement.removeClass("opacity-[0.5]");
+      }
+    }
   }, []);
 
   return (
-    <Navbar className="navBar-itm opacity-[0.5] hover:opacity-[1] border-none rounded-none max-w-full bg-[#23252b;] mx-auto p-2 lg:pl-6 text-white fixed z-50">
+    <Navbar className="navBar-itm hover:opacity-[1] border-none rounded-none max-w-full bg-[#23252b;] mx-auto p-2 lg:pl-6 text-white fixed z-50">
       <div className="relative mx-auto flex items-center ">
         <IconButton
           size="sm"

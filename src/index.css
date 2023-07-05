@@ -2,10 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
-    box-sizing: border-box;
+* {
+  box-sizing: border-box;
 }
-.erc-footer{
-    /*23252b   old: 213944  */
-    background: #000 linear-gradient(180deg,#0000,#1a0e22);
+.erc-footer {
+  /*23252b   old: 213944  */
+  background: #000 linear-gradient(180deg, #0000, #1a0e22);
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeout {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
 }

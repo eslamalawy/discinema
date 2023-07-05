@@ -1,0 +1,10 @@
+.contenthidden {
+    opacity: 0;
+    transition: opacity 1s;
+  }
+  
+  .contenthidden.fade-in {
+    opacity: 1;
+  }
+  
+  
