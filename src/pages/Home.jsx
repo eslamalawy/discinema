@@ -13,7 +13,8 @@ export default function Home() {
 
       <h1 className="text-7xl mr-0 text-green-700">Hello TailWend CSS</h1>
 
-      <SwiperAuto />
+      <SwiperAuto color="#db2197"/>
+      <SwiperAuto color="#653233"/>
       <Example />
     </div>
   );

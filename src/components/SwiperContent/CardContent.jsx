@@ -1,10 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import "./style.css";
 import { StarIcon, PlusIcon } from "@heroicons/react/24/solid";
 import { PlayIcon } from "@heroicons/react/24/outline";
+import $ from "jquery";
 
-export default function CardContent() {
+export default function CardContent(props) {
+  const { color } = props;
+  const headingRef = useRef(null);
   const [isHovered, setIsHovered] = useState(false);
+
+  useEffect(() => {
+    if (color && headingRef) {
+      const txtInstance = headingRef.current;
+      $(txtInstance).css("color", color);
+    }
+  }, [color, headingRef]);
 
   const handleMouseEnter = () => {
     setIsHovered(true);
@@ -21,7 +31,8 @@ export default function CardContent() {
     return str.slice(0, maxLength) + "...";
   };
 
-  let str = "One Piece is the story of Monkey D. Luffy who became a rubber man after accidently eating a Devil Fruit. In his quest, Luffy builds his crew and continues on his adventure to find the mysterious treasure One Piece.";
+  let str =
+    "One Piece is the story of Monkey D. Luffy who became a rubber man after accidently eating a Devil Fruit. In his quest, Luffy builds his crew and continues on his adventure to find the mysterious treasure One Piece.";
   const trancatedStr = truncateString(str, 230);
 
   return (
@@ -74,7 +85,9 @@ export default function CardContent() {
             className="h-[266px] w-[170px]"
           />
           <div className="flex flex-col items-start">
-            <p className="text-sm font-bold">Bungo Stray Dogs</p>
+            <p ref={headingRef} className="text-sm font-bold">
+              Bungo Stray Dogs
+            </p>
             <p className="text-sm text-gray-600">Sub - Arabic</p>
           </div>
         </div>
