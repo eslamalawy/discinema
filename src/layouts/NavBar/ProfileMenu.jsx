@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   Typography,
   Button,
@@ -18,7 +18,12 @@ import {
   ArrowLeftOnRectangleIcon,
   PlusCircleIcon,
 } from "@heroicons/react/24/outline";
+import $ from "jquery";
+
 import { useNavigate } from "react-router-dom";
+import { MainContext } from "../../context/MainContext";
+import { doesHttpOnlyCookieExist, getCookieValue } from "../../utils";
+import { UserAPI } from "../../API/UserAPI";
 
 // profile menu component
 const profileMenuItems = [
@@ -62,21 +67,50 @@ const NotLoggedMenuItems = [
   },
 ];
 
-let MenuItems = [];
+//let MenuItems = [];
 
 export default function ProfileMenu() {
+  const [isLogedIn, setIsLogedIn] = useState(false);
+  const [userImg, setUserImg] = useState(null);
+  const [MenuItems, setMenuItems] = useState(NotLoggedMenuItems);
+  const { setUser, user } = useContext(MainContext);
+
+  useEffect(() => {
+    // const jwtToken = getCookieValue("jwt");
+    // console.log("cookies sec By Func: ", jwtToken);
+    const jwtExist = doesHttpOnlyCookieExist("jwt");
+    if (jwtExist) {
+      // console.log("cookies sec By does: ", jwtExist);
+      async function fetchMyAPI() {
+        const res = await UserAPI.Me();
+        if (res?.status === "success") {
+          //console.log(res.status, res.data.data);
+          setUser(res.data.data);
+        }
+      }
+
+      fetchMyAPI();
+    }
+  }, []);
+
+  useEffect(() => {
+    console.log("change happened: ", user);
+    if (user) {
+      setIsLogedIn(true);
+      setUserImg(`${process.env.REACT_APP_PUBLIC_IMG_URL}${user.photo}`)
+      setMenuItems(profileMenuItems);
+    } else {
+      setIsLogedIn(false);
+      setMenuItems(NotLoggedMenuItems);
+    }
+  }, [user]);
+
   const navigateTo = useNavigate();
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const closeMenu = (url) => {
     setIsMenuOpen(false);
     navigateTo(url);
   };
-  const isLogedIn = true;
-  if (isLogedIn) {
-    MenuItems = profileMenuItems;
-  } else {
-    MenuItems = NotLoggedMenuItems;
-  }
 
   return (
     <Menu open={isMenuOpen} handler={setIsMenuOpen} placement="bottom-end">
@@ -93,7 +127,8 @@ export default function ProfileMenu() {
               size="sm"
               alt="candice wu"
               className="border border-blue-500 p-0.5"
-              src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
+              src={userImg}
+              crossOrigin="anonymous"
             />
           ) : (
             <svg

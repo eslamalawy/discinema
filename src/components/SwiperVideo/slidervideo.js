@@ -166,7 +166,7 @@ export const SliderVideo = ({ slides }) => {
       $(myimage_ref).show();
       $(myvideo_ref).hide();
       new_timeout = setTimeout(function () {
-        swiperInstance.slideNext();
+        swiperInstance.slideNext(500);
       }, waiting);
     }
 

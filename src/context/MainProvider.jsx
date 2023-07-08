@@ -1,15 +1,17 @@
-import React, {useState}from 'react'
-import { MainContext } from './MainContext'
+import React, { useState } from "react";
+import { MainContext } from "./MainContext";
 
 export default function MainProvider(props) {
-  // const [isVideoLoaded, setIsVideoLoaded] = useState(false);
-  // const [VideoPlayer, setVideoPlayer] = useState(null);
+  //login token
+  const [user, setUser] = useState(null);
 
-  // const ReturnValue = {
-  //   ""
-  // }
+  //returning values
+  let myval = {
+    user,
+    setUser,
+  };
 
   return (
-    <MainContext.Provider value={""}>{props.children}</MainContext.Provider>
-  )
+    <MainContext.Provider value={myval}>{props.children}</MainContext.Provider>
+  );
 }

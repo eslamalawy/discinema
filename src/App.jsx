@@ -3,6 +3,8 @@ import MyNavbar from "./layouts/NavBar/MyNavbar";
 import Footer from "./layouts/Footer";
 import Home from "./pages/Home";
 import ErrorPage from "./pages/ErrorPage";
+import Login from "./pages/Login";
+import SignUp from "./pages/SignUp";
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
         <Routes>
           <Route path="home" element={<Home />} />
           <Route path="/" element={<Navigate to="/home" />} />
+          <Route path="login" element={<Login />} />
+          <Route path="signup" element={<SignUp />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
 

@@ -1,2 +1,2 @@
 import { createContext } from "react";
-export let MainContext = createContext();
+export const MainContext = createContext();
