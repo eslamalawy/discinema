@@ -33,7 +33,7 @@ export default function SignUp() {
 
   const btnSubmit = async (e) => {
     e.preventDefault();
-    console.log("Clicked");
+    //console.log("Clicked");
     const email = emailRef.current.children[0].value;
     const password = passwordRef.current.children[0].value;
     const passwordConfirm = passwordCRef.current.children[0].value;

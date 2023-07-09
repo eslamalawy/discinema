@@ -5,7 +5,7 @@ const url = process.env.REACT_APP_BASE_URL + "users";
 
 //const navigateTo = useNavigate();
 //https://betterprogramming.pub/handling-async-errors-with-axios-in-react-1e25c058a8c9
-export const Login = async (email, password) => {
+const Login = async (email, password) => {
   try {
     const res = await axios({
       method: "POST",
@@ -25,7 +25,7 @@ export const Login = async (email, password) => {
   }
 };
 
-export const SignUp = async (name, email, password, passwordConfirm) => {
+const SignUp = async (name, email, password, passwordConfirm) => {
   try {
     const res = await axios({
       method: "POST",
@@ -47,7 +47,7 @@ export const SignUp = async (name, email, password, passwordConfirm) => {
   }
 };
 
-export const Me = async () => {
+const Me = async () => {
   try {
     const res = await axios({
       method: "GET",
@@ -63,23 +63,46 @@ export const Me = async () => {
   }
 };
 
+const LogOut = async () => {
+  try {
+    const res = await axios({
+      method: "GET",
+      url: `${url}/logout`,
+      withCredentials: true,
+    });
+
+    if (res.data.status === "success") {
+      return res.data;
+    }
+  } catch (err) {
+    return err.response.data;
+  }
+};
+
+// type is either 'password' , or 'data'
+const updateSettings = async (data, type) => {
+  try {
+    const postfix = type === "password" ? "/updateMyPassword" : "/updateMe";
+
+    const res = await axios({
+      method: "PATCH",
+      url: `${url}${postfix}`,
+      data,
+      withCredentials: true,
+    });
+
+    if (res.data.status === "success") {
+      return res.data;
+    }
+  } catch (err) {
+    return err.response.data;
+  }
+};
+
 export const UserAPI = {
   Login,
   Me,
   SignUp,
+  LogOut,
+  updateSettings,
 };
-
-// export const logout = async () => {
-//   try {
-//     const res = await axios({
-//       method: "GET",
-//       url: "/api/v1/users/logout",
-//     });
-
-//     if (res.data.status === "success") {
-//       location.reload(true);
-//     }
-//   } catch (error) {
-//     showAlert("error", "Error logging out! Try Again.");
-//   }
-// };

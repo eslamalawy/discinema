@@ -1,38 +1,39 @@
 import React from "react";
 import { Typography } from "@material-tailwind/react";
+import { useNavigate } from "react-router-dom";
 
 const SITEMAP = [
   {
     title: "Navigation",
     links: [
-      ["Browse Popular", "https://discinema.com/about"],
-      ["Browse New", "https://discinema.com/careers"],
-      ["Anime", "https://discinema.com/team"],
+      ["Browse Popular", "/about"],
+      ["Browse New", "/careers"],
+      ["Anime", "/team"],
     ],
   },
   {
     title: "Help Center",
     links: [
-      ["Youtube", "https://discinema.com/youtube"],
-      ["Twitter", "https://discinema.com/twitter"],
-      ["Facebook", "https://discinema.com/facebook"],
-      ["Instagram", "https://discinema.com/Instagram"],
+      ["Youtube", "/youtube"],
+      ["Twitter", "/twitter"],
+      ["Facebook", "/facebook"],
+      ["Instagram", "/Instagram"],
     ],
   },
   {
     title: "Resources",
     links: [
-      ["Start a Free Trial", "https://discinema.com/freetrial"],
-      ["About", "https://discinema.com/about"],
-      ["Terms of Use", "https://discinema.com/terms"],
-      ["Privacy Policy", "https://discinema.com/privacy"],
+      ["Start a Free Trial", "/freetrial"],
+      ["About", "/about"],
+      ["Terms of Use", "/terms"],
+      ["Privacy Policy", "/privacy"],
     ],
   },
   {
     title: "Account",
     links: [
-      ["Create Account", "https://discinema.com/register"],
-      ["Log In", "https://discinema.com/login"],
+      ["Create Account", "/signup"],
+      ["Log In", "/login"],
     ],
   },
 ];
@@ -40,6 +41,10 @@ const SITEMAP = [
 const currentYear = new Date().getFullYear();
 
 export default function Footer() {
+  const navigateTo = useNavigate();
+  const navigate =(url)=>{
+    navigateTo(url);
+  } 
   return (
     <div className="mt-auto">
       <footer className="relative w-full erc-footer">
@@ -63,8 +68,8 @@ export default function Footer() {
                       className="font-normal"
                     >
                       <a
-                        href={link[1] ? link[1] : "#"}
-                        className="inline-block py-1 pr-2 transition-transform hover:scale-105"
+                        onClick={() => navigate(link[1])}
+                        className="cursor-pointer hover:text-pink-500  inline-block py-1 pr-2 transition-transform hover:scale-105"
                       >
                         {link[0] ? link[0] : ""}
                       </a>

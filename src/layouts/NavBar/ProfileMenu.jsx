@@ -12,17 +12,14 @@ import {
   UserCircleIcon,
   ChevronDownIcon,
   Cog6ToothIcon,
-  InboxArrowDownIcon,
-  LifebuoyIcon,
   PowerIcon,
   ArrowLeftOnRectangleIcon,
   PlusCircleIcon,
+  WrenchScrewdriverIcon,
 } from "@heroicons/react/24/outline";
-import $ from "jquery";
-
 import { useNavigate } from "react-router-dom";
 import { MainContext } from "../../context/MainContext";
-import { doesHttpOnlyCookieExist, getCookieValue } from "../../utils";
+import { doesHttpOnlyCookieExist } from "../../utils";
 import { UserAPI } from "../../API/UserAPI";
 
 // profile menu component
@@ -36,16 +33,6 @@ const profileMenuItems = [
     label: "Edit Profile",
     icon: Cog6ToothIcon,
     url: "/me/edit",
-  },
-  {
-    label: "Inbox",
-    icon: InboxArrowDownIcon,
-    url: "/inbox",
-  },
-  {
-    label: "Help",
-    icon: LifebuoyIcon,
-    url: "/help",
   },
   {
     label: "Sign Out",
@@ -97,8 +84,16 @@ export default function ProfileMenu() {
     console.log("change happened: ", user);
     if (user) {
       setIsLogedIn(true);
-      setUserImg(`${process.env.REACT_APP_PUBLIC_IMG_URL}${user.photo}`)
-      setMenuItems(profileMenuItems);
+      let pitems = [...profileMenuItems];
+      if (user.role == "admin") {
+        pitems.unshift({
+          label: "Admin Control",
+          icon: WrenchScrewdriverIcon,
+          url: "/admin",
+        });
+      }
+      setUserImg(`${process.env.REACT_APP_PUBLIC_IMG_URL}${user.photo}`);
+      setMenuItems(pitems);
     } else {
       setIsLogedIn(false);
       setMenuItems(NotLoggedMenuItems);
@@ -107,9 +102,18 @@ export default function ProfileMenu() {
 
   const navigateTo = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const closeMenu = (url) => {
+  const closeMenu = async (url) => {
     setIsMenuOpen(false);
-    navigateTo(url);
+    if (url == "/logout") {
+      const res = await UserAPI.LogOut();
+      if (res?.status == "success") {
+        //console.log("wants to logout bro ?", res);
+        setUser(null);
+        navigateTo("/home");
+      }
+    } else {
+      navigateTo(url);
+    }
   };
 
   return (
