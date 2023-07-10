@@ -9,6 +9,8 @@ import MePage from "./pages/MePage";
 import Profile from "./components/profile/Profile";
 import ProfileEdit from "./components/profile/ProfileEdit";
 import ProfilePassword from "./components/profile/ProfilePassword";
+import ResetPassword from "./components/password Reset/ResetPassword";
+import ResetPwToken from "./components/password Reset/ResetPwToken";
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
         <Route path="/" element={<Navigate to="/home" />} />
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<SignUp />} />
+        <Route path="resetpassword" element={<ResetPassword />} />
+        <Route path="resetpassword/:id" element={<ResetPwToken />} />
 
         <Route path="me" element={<MePage />}>
           <Route path="" element={<Profile />} />

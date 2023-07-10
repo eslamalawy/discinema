@@ -99,10 +99,52 @@ const updateSettings = async (data, type) => {
   }
 };
 
+const ForgetPassword = async (email) => {
+  try {
+    const res = await axios({
+      method: "POST",
+      url: `${url}/forgotPassword`,
+      data: {
+        email,
+      },
+    });
+
+    if (res.data.status === "success") {
+      return res.data;
+    }
+  } catch (err) {
+    return err.response.data;
+  }
+};
+
+const ResetPassword = async (id,password, passwordConfirm) => {
+  try {
+    const res = await axios({
+      method: "PATCH",
+      url: `${url}/resetPassword/${id}`,
+      withCredentials: true,
+      data: {
+        password,
+        passwordConfirm,
+      },
+    });
+
+    if (res.data.status === "success") {
+      return res.data;
+    }
+  } catch (err) {
+    return err.response.data;
+  }
+};
+
+
+
 export const UserAPI = {
   Login,
   Me,
   SignUp,
   LogOut,
   updateSettings,
+  ForgetPassword,
+  ResetPassword
 };

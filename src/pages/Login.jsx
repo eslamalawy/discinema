@@ -105,7 +105,7 @@ export default function Login() {
               Login
             </Button>
 
-            <Typography color="gray" className="mt-4 text-center font-normal">
+            <Typography color="gray" className="mt-4 font-normal">
               Don't have an account?{" "}
               <a
                 onClick={() => navigateTo("/signup")}
@@ -114,6 +114,16 @@ export default function Login() {
                 Sign Up
               </a>
             </Typography>
+            <Typography color="gray" className="mt-4 font-normal">
+             Forgot your password?{" "}
+              <a
+                onClick={() => navigateTo("/resetpassword")}
+                className="font-medium cursor-pointer text-blue-500 transition-colors hover:text-blue-gray-900"
+              >
+                Reset it
+              </a>
+            </Typography>
+            
           </form>
         </Card>
       </div>
