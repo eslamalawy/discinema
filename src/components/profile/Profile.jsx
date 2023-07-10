@@ -4,7 +4,7 @@ import { Input, Typography, Card, Avatar } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
 
 export default function Profile() {
-  const { setUser, user } = useContext(MainContext);
+  const { user } = useContext(MainContext);
   const navigateTo = useNavigate();
   const navigate = (url) => {
     navigateTo(url);

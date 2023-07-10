@@ -9,11 +9,13 @@ import {
   UserCircleIcon,
   Cog6ToothIcon,
   StarIcon,
-  KeyIcon
+  KeyIcon,
+  WrenchScrewdriverIcon,
 } from "@heroicons/react/24/solid";
 
 export default function MePage() {
   const [openLeft, setOpenLeft] = useState(false);
+  const [Admin, setAdmin] = useState(false);
   const openDrawerLeft = () => setOpenLeft(true);
   const closeDrawerLeft = () => setOpenLeft(false);
   const navigateTo = useNavigate();
@@ -21,13 +23,19 @@ export default function MePage() {
     closeDrawerLeft();
     navigateTo(url);
   };
-  const { setUser, user } = useContext(MainContext);
+  const { user } = useContext(MainContext);
   useEffect(() => {
     if (!user) {
       navigate("/login");
     }
+
+    if (user?.role == "admin") {
+      setAdmin(true);
+    } else {
+      setAdmin(false);
+    }
   }, []);
-  
+
   return (
     <div>
       <PaddingTop />
@@ -102,17 +110,42 @@ export default function MePage() {
                 Change Password
               </ListItem>
 
+              {!Admin && (
+                <ListItem
+                  onClick={() => {
+                    navigate("/me/reviews");
+                  }}
+                >
+                  <ListItemPrefix>
+                    <StarIcon className="h-5 w-5" />
+                  </ListItemPrefix>
+                  My Reviews
+                </ListItem>
+              )}
 
-              <ListItem
-                onClick={() => {
-                  navigate("/me/reviews");
-                }}
-              >
-                <ListItemPrefix>
-                  <StarIcon className="h-5 w-5" />
-                </ListItemPrefix>
-                My Reviews
-              </ListItem>
+              {Admin && (
+                <div className=" mt-2">
+                  <hr />
+                  <Typography
+                    className=" mt-1 text-center"
+                    variant="h6"
+                    color="blue"
+                  >
+                    Admin Control
+                  </Typography>
+
+                  <ListItem
+                    onClick={() => {
+                      navigate("/me/admin/users");
+                    }}
+                  >
+                    <ListItemPrefix>
+                      <WrenchScrewdriverIcon className="h-5 w-5" />
+                    </ListItemPrefix>
+                    Control Users
+                  </ListItem>
+                </div>
+              )}
             </List>
           </Card>
         </div>

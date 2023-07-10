@@ -19,7 +19,6 @@ import {
 } from "@heroicons/react/24/outline";
 import { useNavigate } from "react-router-dom";
 import { MainContext } from "../../context/MainContext";
-import { doesHttpOnlyCookieExist } from "../../utils";
 import { UserAPI } from "../../API/UserAPI";
 
 // profile menu component
@@ -63,24 +62,6 @@ export default function ProfileMenu() {
   const { setUser, user } = useContext(MainContext);
 
   useEffect(() => {
-    // const jwtToken = getCookieValue("jwt");
-    // console.log("cookies sec By Func: ", jwtToken);
-    const jwtExist = doesHttpOnlyCookieExist("jwt");
-    if (jwtExist) {
-      // console.log("cookies sec By does: ", jwtExist);
-      async function fetchMyAPI() {
-        const res = await UserAPI.Me();
-        if (res?.status === "success") {
-          //console.log(res.status, res.data.data);
-          setUser(res.data.data);
-        }
-      }
-
-      fetchMyAPI();
-    }
-  }, []);
-
-  useEffect(() => {
     console.log("change happened: ", user);
     if (user) {
       setIsLogedIn(true);
@@ -89,7 +70,7 @@ export default function ProfileMenu() {
         pitems.unshift({
           label: "Admin Control",
           icon: WrenchScrewdriverIcon,
-          url: "/admin",
+          url: "/me/admin/users",
         });
       }
       setUserImg(`${process.env.REACT_APP_PUBLIC_IMG_URL}${user.photo}`);

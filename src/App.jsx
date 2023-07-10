@@ -11,6 +11,9 @@ import ProfileEdit from "./components/profile/ProfileEdit";
 import ProfilePassword from "./components/profile/ProfilePassword";
 import ResetPassword from "./components/password Reset/ResetPassword";
 import ResetPwToken from "./components/password Reset/ResetPwToken";
+import CUsers from "./components/profile/admincontrol/CUsers";
+import CDefault from "./components/profile/admincontrol/CDefault";
+
 
 function App() {
   return (
@@ -32,6 +35,10 @@ function App() {
           <Route path="" element={<Profile />} />
           <Route path="edit" element={<ProfileEdit />} />
           <Route path="password" element={<ProfilePassword />} />
+  
+          <Route path="admin" element={<CDefault />}  >
+            <Route path="users" element={<CUsers />} />
+          </Route>
         </Route>
 
         <Route path="*" element={<ErrorPage />} />

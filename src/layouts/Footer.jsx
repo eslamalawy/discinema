@@ -34,6 +34,8 @@ const SITEMAP = [
     links: [
       ["Create Account", "/signup"],
       ["Log In", "/login"],
+      ["Reset Password", "/resetpassword"],
+      ["Profile", "/me"],
     ],
   },
 ];
