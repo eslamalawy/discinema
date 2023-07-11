@@ -117,7 +117,7 @@ const ForgetPassword = async (email) => {
   }
 };
 
-const ResetPassword = async (id,password, passwordConfirm) => {
+const ResetPassword = async (id, password, passwordConfirm) => {
   try {
     const res = await axios({
       method: "PATCH",
@@ -137,7 +137,21 @@ const ResetPassword = async (id,password, passwordConfirm) => {
   }
 };
 
+const DeleteUser = async () => {
+  try {
+    const res = await axios({
+      method: "DELETE",
+      url: `${url}/deleteMe`,
+      withCredentials: true,
+    });
 
+    if (res.data.status === "success") {
+      return res.data;
+    }
+  } catch (err) {
+    return err.response.data;
+  }
+};
 
 export const UserAPI = {
   Login,
@@ -146,5 +160,6 @@ export const UserAPI = {
   LogOut,
   updateSettings,
   ForgetPassword,
-  ResetPassword
+  ResetPassword,
+  DeleteUser,
 };

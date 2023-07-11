@@ -64,6 +64,20 @@ export default function ProfileEdit() {
       }
     }
   };
+  const btnDelete = async () => {
+    const res = await UserAPI.DeleteUser();
+
+    if (!res) {
+      setMessage("User Deleted Successfully!");
+      setStatus("success");
+      setshowAlert(true);
+      setUser(null);
+    } else {
+      setStatus(res?.status);
+      setMessage(res?.message);
+      setshowAlert(true);
+    }
+  };
 
   useEffect(() => {
     if (showAlert) {
@@ -130,6 +144,16 @@ export default function ProfileEdit() {
             {showAlert && <RaiseAlert2 state={status} message={message} />}
             <Button type="submit" onClick={btnSubmit} fullWidth>
               Save Changes
+            </Button>
+          </div>
+
+          <div className=" mt-2 ">
+            <Typography className="text-center mb-2" variant="h3" color="blue">
+              Delete your account?
+            </Typography>
+
+            <Button color="red" type="submit" onClick={btnDelete} fullWidth>
+              Delete Account
             </Button>
           </div>
         </div>
