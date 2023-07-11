@@ -1,5 +1,8 @@
 import React, { useEffect, useState, useRef } from "react";
-import { MagnifyingGlassIcon } from "@heroicons/react/24/outline";
+import {
+  MagnifyingGlassIcon,
+  PlusCircleIcon,
+} from "@heroicons/react/24/outline";
 import {
   PencilIcon,
   TrashIcon,
@@ -37,6 +40,7 @@ import {
 import { CSeriesAPI } from "../../../API/CSeriesAPI";
 import RaiseAlert2 from "../../Alerts/RaiseAlert2";
 import { truncateString } from "../../../utils";
+import { useNavigate } from "react-router-dom";
 
 const TABS = [
   {
@@ -72,9 +76,14 @@ const TABLE_HEAD = [
   "Status",
   "Edit",
   "Delete",
+  "",
 ];
 
 export default function CSeries() {
+  const navigateTo = useNavigate();
+  const navigate = (val) => {
+    navigateTo(val);
+  };
   const [TABLE_ROWS, setTABLE_ROWS] = useState([]);
   const [seriesCount, setSeriesCount] = useState(0);
   const [pageCount, setPageCount] = useState(0);
@@ -982,6 +991,19 @@ export default function CSeries() {
                           color="red"
                         >
                           <TrashIcon className=" h-4 w-4" />
+                        </IconButton>
+                      </Tooltip>
+                    </td>
+                    <td className={classes}>
+                      <Tooltip content="Add Season">
+                        <IconButton
+                          onClick={() => {
+                            navigate(`/me/admin/season/${_id}`);
+                          }}
+                          variant="text"
+                          color="green"
+                        >
+                          <PlusCircleIcon className=" h-5 w-5" />
                         </IconButton>
                       </Tooltip>
                     </td>

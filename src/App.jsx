@@ -14,6 +14,7 @@ import ResetPwToken from "./components/password Reset/ResetPwToken";
 import CUsers from "./components/profile/admincontrol/CUsers";
 import CDefault from "./components/profile/admincontrol/CDefault";
 import CSeries from "./components/profile/admincontrol/CSeries";
+import CSeason from "./components/profile/admincontrol/CSeason";
 
 function App() {
   return (
@@ -39,6 +40,8 @@ function App() {
           <Route path="admin" element={<CDefault />}>
             <Route path="users" element={<CUsers />} />
             <Route path="series" element={<CSeries />} />
+            <Route path="season" element={<CSeason />} />
+            <Route path="season/:id" element={<CSeason />} />
           </Route>
         </Route>
 

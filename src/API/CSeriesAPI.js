@@ -5,7 +5,7 @@ const GetSeriesCount = async (filter) => {
   try {
     const res = await axios({
       method: "GET",
-      url: filter ? `${url}?${filter}` : `${url}`,
+      url: filter ? `${url}?fields=${filter}` : `${url}`,
       withCredentials: true,
     });
 
