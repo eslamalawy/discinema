@@ -3,6 +3,7 @@ import "./style.css";
 import { StarIcon, PlusIcon } from "@heroicons/react/24/solid";
 import { PlayIcon } from "@heroicons/react/24/outline";
 import $ from "jquery";
+import { truncateString } from "../../utils";
 
 export default function CardContent(props) {
   const { color } = props;
@@ -22,13 +23,6 @@ export default function CardContent(props) {
 
   const handleMouseLeave = () => {
     setIsHovered(false);
-  };
-
-  const truncateString = (str, maxLength) => {
-    if (str.length <= maxLength) {
-      return str;
-    }
-    return str.slice(0, maxLength) + "...";
   };
 
   let str =

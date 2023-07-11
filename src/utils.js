@@ -22,3 +22,11 @@ export const doesHttpOnlyCookieExist = (cookiename) => {
   document.cookie = cookiename + "=new_value;path=/;" + expires;
   return document.cookie.indexOf(cookiename + "=") == -1;
 };
+
+
+export const truncateString = (str, maxLength) => {
+  if (str.length <= maxLength) {
+    return str;
+  }
+  return str.slice(0, maxLength) + "...";
+};

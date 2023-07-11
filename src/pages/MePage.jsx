@@ -144,6 +144,17 @@ export default function MePage() {
                     </ListItemPrefix>
                     Control Users
                   </ListItem>
+
+                  <ListItem
+                    onClick={() => {
+                      navigate("/me/admin/series");
+                    }}
+                  >
+                    <ListItemPrefix>
+                      <WrenchScrewdriverIcon className="h-5 w-5" />
+                    </ListItemPrefix>
+                    Control Series
+                  </ListItem>
                 </div>
               )}
             </List>
