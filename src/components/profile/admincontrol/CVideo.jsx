@@ -697,7 +697,7 @@ export default function CVideo() {
                             <Typography
                               variant="small"
                               color="red"
-                              className="font-normal font-bold"
+                              className="font-bold"
                             >
                               Episode
                             </Typography>
@@ -716,7 +716,7 @@ export default function CVideo() {
                             <Typography
                               variant="small"
                               color="blue"
-                              className="font-normal font-bold"
+                              className="font-bold"
                             >
                               Series
                             </Typography>
