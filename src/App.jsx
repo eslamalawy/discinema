@@ -19,6 +19,7 @@ import CEpisode from "./components/profile/admincontrol/CEpisode";
 import CVideo from "./components/profile/admincontrol/CVideo";
 import CReviews from "./components/profile/admincontrol/CReviews";
 import CComments from "./components/profile/admincontrol/CComments";
+import CReply from "./components/profile/admincontrol/CReply";
 
 function App() {
   return (
@@ -53,7 +54,7 @@ function App() {
             <Route path="video/s/:seriesId" element={<CVideo />} />
             <Route path="review" element={<CReviews />} />
             <Route path="comments" element={<CComments />} />
-
+            <Route path="reply" element={<CReply />} />
             
           </Route>
         </Route>

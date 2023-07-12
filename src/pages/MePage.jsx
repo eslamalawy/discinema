@@ -210,7 +210,16 @@ export default function MePage() {
                     Control Comments
                   </ListItem>
 
-
+                  <ListItem
+                    onClick={() => {
+                      navigate("/me/admin/reply");
+                    }}
+                  >
+                    <ListItemPrefix>
+                      <WrenchScrewdriverIcon className="h-5 w-5" />
+                    </ListItemPrefix>
+                    Control Replies
+                  </ListItem>
                 </div>
               )}
             </List>
