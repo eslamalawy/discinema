@@ -874,7 +874,7 @@ export default function CSeries() {
                       <div className="flex items-center gap-3">
                         <Avatar
                           className="w-15"
-                          src={images.posterWide[0].source}
+                          src={images.posterWide[0]?.source}
                           alt={name}
                           variant="square"
                           size="lg"

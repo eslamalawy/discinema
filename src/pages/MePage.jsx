@@ -165,6 +165,18 @@ export default function MePage() {
                     </ListItemPrefix>
                     Control Seasons
                   </ListItem>
+
+                  <ListItem
+                    onClick={() => {
+                      navigate("/me/admin/episode");
+                    }}
+                  >
+                    <ListItemPrefix>
+                      <WrenchScrewdriverIcon className="h-5 w-5" />
+                    </ListItemPrefix>
+                    Control Episodes
+                  </ListItem>
+
                 </div>
               )}
             </List>

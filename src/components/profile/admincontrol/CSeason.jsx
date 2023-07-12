@@ -1,32 +1,22 @@
 import React, { useEffect, useState, useRef } from "react";
-import { MagnifyingGlassIcon, PlusCircleIcon } from "@heroicons/react/24/outline";
 import {
-  PencilIcon,
-  TrashIcon,
-  PlusIcon,
-  PaperAirplaneIcon,
-} from "@heroicons/react/24/solid";
+  MagnifyingGlassIcon,
+  PlusCircleIcon,
+} from "@heroicons/react/24/outline";
+import { PencilIcon, TrashIcon, PlusIcon } from "@heroicons/react/24/solid";
 import {
   Card,
   CardHeader,
   Input,
-  Textarea,
-  Menu,
-  MenuItem,
-  MenuList,
-  MenuHandler,
   Typography,
   Button,
-  Checkbox,
   CardBody,
-  Chip,
   CardFooter,
   Tabs,
   TabsHeader,
   Tab,
   Select,
   Option,
-  Avatar,
   IconButton,
   Tooltip,
   Dialog,
@@ -51,7 +41,8 @@ const TABLE_HEAD = [
   "Series",
   "Episodes Count",
   "Edit",
-  "Delete",""
+  "Delete",
+  "",
 ];
 
 export default function CSeason() {
@@ -459,7 +450,7 @@ export default function CSeason() {
                       <Tooltip content="Add Episode">
                         <IconButton
                           onClick={() => {
-                            navigate(`/me/admin/episode/${_id}`);
+                            navigate(`/me/admin/episode/${series}/${_id}`);
                           }}
                           variant="text"
                           color="green"
@@ -468,7 +459,6 @@ export default function CSeason() {
                         </IconButton>
                       </Tooltip>
                     </td>
-
                   </tr>
                 );
               }
