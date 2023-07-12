@@ -16,6 +16,7 @@ import CDefault from "./components/profile/admincontrol/CDefault";
 import CSeries from "./components/profile/admincontrol/CSeries";
 import CSeason from "./components/profile/admincontrol/CSeason";
 import CEpisode from "./components/profile/admincontrol/CEpisode";
+import CVideo from "./components/profile/admincontrol/CVideo";
 
 function App() {
   return (
@@ -45,6 +46,9 @@ function App() {
             <Route path="season/:id" element={<CSeason />} />
             <Route path="episode" element={<CEpisode />} />
             <Route path="episode/:seriesId/:seasonId" element={<CEpisode />} />
+            <Route path="video" element={<CVideo />} />
+            <Route path="video/:episodeId" element={<CVideo />} />
+            <Route path="video/s/:seriesId" element={<CVideo />} />
           </Route>
         </Route>
 

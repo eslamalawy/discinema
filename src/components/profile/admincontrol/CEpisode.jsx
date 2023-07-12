@@ -107,8 +107,8 @@ export default function CEpisode() {
   //Search info
   const [SearchBy, SetSearchBy] = useState("name");
   const SearchRef = useRef(null);
-  const KeywordRef = useRef(null);
-  //tall image
+  
+  //image
   const WidthRef = useRef(null);
   const HeightRef = useRef(null);
   const SourceRef = useRef(null);
@@ -909,7 +909,7 @@ export default function CEpisode() {
                       <Tooltip content="Add Video">
                         <IconButton
                           onClick={() => {
-                            navigate(`/me/admin/video/episode/${_id}`);
+                            navigate(`/me/admin/video/${_id}`);
                           }}
                           variant="text"
                           color="green"

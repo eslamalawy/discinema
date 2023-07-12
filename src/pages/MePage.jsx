@@ -177,6 +177,16 @@ export default function MePage() {
                     Control Episodes
                   </ListItem>
 
+                  <ListItem
+                    onClick={() => {
+                      navigate("/me/admin/video");
+                    }}
+                  >
+                    <ListItemPrefix>
+                      <WrenchScrewdriverIcon className="h-5 w-5" />
+                    </ListItemPrefix>
+                    Control Videos
+                  </ListItem>
                 </div>
               )}
             </List>

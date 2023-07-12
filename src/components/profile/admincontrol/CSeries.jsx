@@ -76,7 +76,7 @@ const TABLE_HEAD = [
   "Status",
   "Edit",
   "Delete",
-  "",
+  "+S","+V"
 ];
 
 export default function CSeries() {
@@ -999,6 +999,19 @@ export default function CSeries() {
                         <IconButton
                           onClick={() => {
                             navigate(`/me/admin/season/${_id}`);
+                          }}
+                          variant="text"
+                          color="green"
+                        >
+                          <PlusCircleIcon className=" h-5 w-5" />
+                        </IconButton>
+                      </Tooltip>
+                    </td>
+                    <td className={classes}>
+                      <Tooltip content="Add Banner Video">
+                        <IconButton
+                          onClick={() => {
+                            navigate(`/me/admin/video/s/${_id}`);
                           }}
                           variant="text"
                           color="green"
