@@ -25,32 +25,20 @@ import {
   Textarea,
 } from "@material-tailwind/react";
 import RaiseAlert2 from "../../Alerts/RaiseAlert2";
-import { CReviewsAPI } from "../../../API/CReviewsAPI";
+import { CCommentsAPI } from "../../../API/CCommentsAPI";
 
 const TABS = [
   {
     label: "All",
     value: "all",
   },
-  {
-    label: "2S",
-    value: "2s",
-  },
-  {
-    label: "3S",
-    value: "3s",
-  },
-  {
-    label: "4S",
-    value: "4s",
-  }
 ];
 
-const TABLE_HEAD = ["Review", "Rating", "User", "Series", "Edit", "Delete"];
+const TABLE_HEAD = ["Comment", "User", "Episode", "Edit", "Delete"];
 
-export default function CReviews() {
+export default function CComments() {
   const [TABLE_ROWS, setTABLE_ROWS] = useState([]);
-  const [seasonsCount, setReviewsCount] = useState(0);
+  const [seasonsCount, setCommentsCount] = useState(0);
   const [pageCount, setPageCount] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [results, setResults] = useState(0);
@@ -68,49 +56,43 @@ export default function CReviews() {
   //Dialog Info
   const [DialogTitle, SetDialogTitle] = useState(null);
   const [DialogId, SetDialogId] = useState(null);
-  const [DialogReview, SetDialogReview] = useState(null);
-  const [DialogRating, SetDialogRating] = useState(null);
-  const [DialogSeries, SetDialogSeries] = useState(null);
+  const [DialogComment, SetDialogComment] = useState(null);
+  const [DialogEpisode, SetDialogEpisode] = useState(null);
   const [DialogUser, SetDialogUser] = useState(null);
   const [DialogAction, SetDialogAction] = useState(null);
   const [open, setOpen] = useState(false);
-  const handleOpen = (title, id, review, rating, user, series, action) => {
+  const handleOpen = (title, id, comment, user, episode, action) => {
     setOpen(!open);
     SetDialogTitle(title);
     SetDialogId(id);
-    SetDialogReview(review);
-    SetDialogRating(rating);
+    SetDialogComment(comment);
     SetDialogUser(user);
-    SetDialogSeries(series);
+    SetDialogEpisode(episode);
     SetDialogAction(action);
   };
 
   const handelDialogConfirm = async () => {
     if (DialogAction == "delete") {
-      const res = await CReviewsAPI.DeleteReview(DialogId);
+      const res = await CCommentsAPI.DeleteComment(DialogId);
       if (!res) {
-        setMessage("Review Deleted Successfully!");
+        setMessage("Comment Deleted Successfully!");
         setStatus("success");
         setshowAlert(true);
-        fetchReviewsCount(filters);
-        fetchReview(currentPage, filters);
+        fetchCommentsCount(filters);
+        fetchComment(currentPage, filters);
       } else {
         setStatus(res?.status);
         setMessage(res?.message);
         setshowAlert(true);
       }
     } else if (DialogAction == "edit") {
-      const res = await CReviewsAPI.UpdateReview(
-        DialogId,
-        DialogReview,
-        DialogRating
-      );
+      const res = await CCommentsAPI.UpdateComment(DialogId, DialogComment);
       if (res?.status == "success") {
-        setMessage("Review Updated Successfully!");
+        setMessage("Comment Updated Successfully!");
         setStatus(res?.status);
         setshowAlert(true);
-        fetchReviewsCount(filters);
-        fetchReview(currentPage, filters);
+        fetchCommentsCount(filters);
+        fetchComment(currentPage, filters);
       } else {
         setStatus(res?.status);
         setMessage(res?.message);
@@ -143,29 +125,29 @@ export default function CReviews() {
     }
   };
 
-  const fetchReview = async (actualpage, filter) => {
-    const res = await CReviewsAPI.GetAllReviews(actualpage, filter);
+  const fetchComment = async (actualpage, filter) => {
+    const res = await CCommentsAPI.GetAllComments(actualpage, filter);
     if (res?.status === "success") {
-      //console.log("fetchReview", res);
+      //console.log("fetchComment", res);
       setResults(res?.results);
       setTABLE_ROWS(res?.data?.data);
     }
   };
 
-  const fetchReviewsCount = async (filter) => {
-    const res_reviewCount = await CReviewsAPI.GetReviewsCount(filter);
-    //console.log("fetchReviewsCount", res_reviewCount);
-    if (res_reviewCount?.status === "success") {
-      setReviewsCount(res_reviewCount?.results);
+  const fetchCommentsCount = async (filter) => {
+    const res_CommentCount = await CCommentsAPI.GetCommentsCount(filter);
+    //console.log("fetchCommentsCount", res_CommentCount);
+    if (res_CommentCount?.status === "success") {
+      setCommentsCount(res_CommentCount?.results);
       // Calculate the page count
-      const count = Math.ceil(res_reviewCount?.results / 10);
+      const count = Math.ceil(res_CommentCount?.results / 10);
       setPageCount(count);
     }
   };
 
   useEffect(() => {
-    fetchReviewsCount(null);
-    fetchReview(currentPage, null);
+    fetchCommentsCount(null);
+    fetchComment(currentPage, null);
   }, []);
 
   const handelSearch = () => {
@@ -178,19 +160,13 @@ export default function CReviews() {
   const tabClick = (tab) => {
     if (tab == "all") {
       setFilters(null);
-    }else if (tab == "2s"){
-      setFilters("&rating[lte]=2");
-    }else if (tab == "3s"){
-      setFilters("&rating[lte]=3");
-    }else if (tab == "4s"){
-      setFilters("&rating[lte]=4");
     }
     setCurrentPage(1);
   };
 
   useEffect(() => {
-    fetchReviewsCount(filters);
-    fetchReview(currentPage, filters);
+    fetchCommentsCount(filters);
+    fetchComment(currentPage, filters);
   }, [filters, currentPage]);
 
   return (
@@ -208,21 +184,13 @@ export default function CReviews() {
           <div className=" flex flex-col gap-3">
             <Textarea
               onChange={(e) => {
-                SetDialogReview(e.target.value);
+                SetDialogComment(e.target.value);
               }}
-              value={DialogReview}
-              label="Review"
+              value={DialogComment}
+              label="Comment"
             />
 
-            <Input
-              onChange={(e) => {
-                SetDialogRating(e.target.value);
-              }}
-              label="Rating"
-              value={DialogRating}
-            />
-
-            <Input disabled label="Series ID" value={DialogSeries} />
+            <Input disabled label="Episode ID" value={DialogEpisode} />
             <Input disabled label="User ID" value={DialogUser?._id} />
           </div>
         </DialogBody>
@@ -249,10 +217,10 @@ export default function CReviews() {
         <div className="mb-8 flex items-center justify-between gap-8">
           <div>
             <Typography variant="h5" color="blue-gray">
-              {`Reviews list [${seasonsCount} Total Reviews]`}
+              {`Comments list [${seasonsCount} Total Comments]`}
             </Typography>
             <Typography color="gray" className="mt-1 font-normal">
-              {`See information about ${results} reviews`}
+              {`See information about ${results} comments`}
             </Typography>
           </div>
           {showAlert && <RaiseAlert2 state={status} message={message} />}
@@ -277,11 +245,11 @@ export default function CReviews() {
             <Select value={SearchBy} label="Search By">
               <Option
                 onClick={() => {
-                  SetSearchBy("series");
+                  SetSearchBy("episode");
                 }}
-                value={"series"}
+                value={"episode"}
               >
-                series
+                episode
               </Option>
               <Option
                 onClick={() => {
@@ -328,7 +296,7 @@ export default function CReviews() {
           </thead>
           <tbody>
             {TABLE_ROWS.map(
-              ({ _id, review, rating, createdAt, series, user }, index) => {
+              ({ _id, comment, createdAt, episode, user }, index) => {
                 const isLast = index === TABLE_ROWS.length - 1;
                 const classes = isLast
                   ? "p-4"
@@ -344,7 +312,7 @@ export default function CReviews() {
                             color="blue-gray"
                             className="font-normal"
                           >
-                            {review}
+                            {comment}
                           </Typography>
                           <Typography
                             variant="small"
@@ -357,11 +325,6 @@ export default function CReviews() {
                           </Typography>
                         </div>
                       </div>
-                    </td>
-                    <td className={classes}>
-                      <Typography variant="small" className="font-normal">
-                        {rating}
-                      </Typography>
                     </td>
                     <td className={classes}>
                       <div className="flex items-center gap-3">
@@ -392,20 +355,19 @@ export default function CReviews() {
 
                     <td className={classes}>
                       <Typography variant="small" className="font-normal">
-                        {series}
+                        {episode}
                       </Typography>
                     </td>
                     <td className={classes}>
-                      <Tooltip content="Edit Review">
+                      <Tooltip content="Edit Comment">
                         <IconButton
                           onClick={() => {
                             handleOpen(
-                              "Edit Review",
+                              "Edit Comment",
                               _id,
-                              review,
-                              rating,
+                              comment,
                               user,
-                              series,
+                              episode,
                               "edit"
                             );
                           }}
@@ -417,16 +379,15 @@ export default function CReviews() {
                       </Tooltip>
                     </td>
                     <td className={classes}>
-                      <Tooltip content="Delete Review">
+                      <Tooltip content="Delete Comment">
                         <IconButton
                           onClick={() => {
                             handleOpen(
-                              "Delete Review",
+                              "Delete Comment",
                               _id,
-                              review,
-                              rating,
+                              comment,
                               user,
-                              series,
+                              episode,
                               "delete"
                             );
                           }}
