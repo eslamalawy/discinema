@@ -1,5 +1,4 @@
 import axios from "axios";
-import { scryRenderedComponentsWithType } from "react-dom/test-utils";
 const url = process.env.REACT_APP_BASE_URL + "series";
 
 const GetSeriesCount = async (filter) => {
@@ -135,11 +134,48 @@ const Search = async (searchKey) => {
   }
 };
 
+const getSingleSeries = async (id) => {
+  try {
+    const res = await axios({
+      method: "GET",
+      url: `${url}/${id}`,
+    });
+
+    if (res.data.status === "success") {
+      return res.data;
+    }
+  } catch (err) {
+    return err.response.data;
+  }
+};
+
+const CreateReviewOnSerie = async (id, rating, review) => {
+  try {
+    const res = await axios({
+      method: "POST",
+      url: `${url}/${id}/reviews`,
+      data: {
+        rating,
+        review,
+      },
+      withCredentials: true,
+    });
+
+    if (res.data.status === "success") {
+      return res.data;
+    }
+  } catch (err) {
+    return err.response.data;
+  }
+};
+
 export const CSeriesAPI = {
   GetSeriesCount,
   GetAllSeries,
   UpdateSeries,
   CreateSeries,
   DeleteSeries,
+  getSingleSeries,
   Search,
+  CreateReviewOnSerie,
 };

@@ -33,8 +33,8 @@ export default function CheckToken() {
         <div>
           <Spinner className="h-16 w-16" color="purple" />
         </div>
-        <Typography className="text-center mt-2" variant="h3" color="blue">
-          Welcome to Discinema
+        <Typography className="text-center mt-2 changa-one" variant="h3" color="blue">
+          Welcome to DisCinema
         </Typography>
 
         <Typography className="text-center mt-2" variant="h5">

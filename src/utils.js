@@ -87,3 +87,31 @@ export const validMimeTypes = [
   { type: "svg", value: "image/svg+xml" },
   { type: "webp", value: "image/webp" },
 ];
+
+export function getRandomColor() {
+  const colors = [
+    "white",
+    "blue-gray",
+    "gray",
+    "brown",
+    "deep-orange",
+    "orange",
+    "amber",
+    "yellow",
+    "lime",
+    "light-green",
+    "green",
+    "teal",
+    "cyan",
+    "light-blue",
+    "blue",
+    "indigo",
+    "deep-purple",
+    "purple",
+    "pink",
+    "red",
+  ];
+
+  const randomIndex = Math.floor(Math.random() * colors.length);
+  return colors[randomIndex];
+}

@@ -93,10 +93,26 @@ const UpdateSeason = async (id, name, number, series) => {
   }
 };
 
+const getSingleSeason = async (id) => {
+  try {
+    const res = await axios({
+      method: "GET",
+      url: `${url}/${id}`,
+    });
+
+    if (res.data.status === "success") {
+      return res.data;
+    }
+  } catch (err) {
+    return err.response.data;
+  }
+};
+
 export const CSeasonsAPI = {
   GetSeasonsCount,
   GetAllSseasons,
   CreateSeason,
   DeleteSeason,
   UpdateSeason,
+  getSingleSeason
 };
