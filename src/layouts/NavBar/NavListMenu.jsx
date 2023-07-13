@@ -12,28 +12,26 @@ import {
   ChevronDownIcon,
   RocketLaunchIcon,
 } from "@heroicons/react/24/outline";
+import { useNavigate } from "react-router-dom";
 // nav list menu
 const navListMenuItems = [
   {
-    title: "@material-tailwind/html",
-    description:
-      "Learn how to use @material-tailwind/html, packed with rich components and widgets.",
+    title: "All Series",
+    description: "Go a head and browse all amazing series",
+    url: "/series",
   },
   {
-    title: "@material-tailwind/react",
+    title: "Home",
     description:
-      "Learn how to use @material-tailwind/react, packed with rich components for React.",
-  },
-  {
-    title: "Material Tailwind PRO",
-    description:
-      "A complete set of UI Elements for building faster websites in less time.",
+      "Where everything begins",
+    url: "/",
   },
 ];
 
 export default function NavListMenu() {
+  const navigateTo = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
-  
+
   const triggers = {
     onClick: () => {
       setIsMenuOpen(true);
@@ -41,7 +39,7 @@ export default function NavListMenu() {
   };
 
   React.useEffect(() => {
-    let my_overlay =document.getElementById("overlay-elements");
+    let my_overlay = document.getElementById("overlay-elements");
     if (isMenuOpen) {
       document.body.style.overflow = "hidden";
       my_overlay.classList.remove("hidden");
@@ -52,13 +50,19 @@ export default function NavListMenu() {
     }
   }, [isMenuOpen]);
 
-  const renderItems = navListMenuItems.map(({ title, description }) => (
-    <a href="#" key={title}>
+  const renderItems = navListMenuItems.map(({ url, title, description }) => (
+    <a
+      onClick={() => {
+        setIsMenuOpen(!isMenuOpen);
+        navigateTo(url);
+      }}
+      key={title}
+    >
       <MenuItem>
-        <Typography variant="h6" color="blue-gray" className="mb-1">
+        <Typography variant="h6" className="mb-1  text-[#86198f]">
           {title}
         </Typography>
-        <Typography variant="small" color="gray" className="font-normal">
+        <Typography variant="small" className="font-normal text-[#4f46e5]">
           {description}
         </Typography>
       </MenuItem>
@@ -88,24 +92,27 @@ export default function NavListMenu() {
           {...triggers}
           className="hidden w-full grid-cols-7 gap-3 overflow-visible lg:grid"
         >
-          <Card
+          {/* <Card
             color="green"
             shadow={false}
             variant="gradient"
             className="col-span-3 grid h-full w-full place-items-center rounded-md"
           >
             <RocketLaunchIcon strokeWidth={1} className="h-28 w-28" />
-          </Card>
-          <ul className="col-span-4 flex w-full flex-col gap-1">
+          </Card> */}
+          {/* <ul className="col-span-4 flex w-full flex-col gap-1">
+            {renderItems}
+          </ul> */}
+          <ul className="col-span-7 flex w-full flex-col gap-1">
             {renderItems}
           </ul>
         </MenuList>
       </Menu>
       {/* mobile view --- view */}
-      <MenuItem className="flex items-center gap-2 text-blue-gray-900 lg:hidden">
+      <MenuItem className="flex items-center gap-2 text-blue-gray-200 lg:hidden">
         <Square3Stack3DIcon className="h-[18px] w-[18px]" /> Browse{" "}
       </MenuItem>
-      <ul className="ml-6 flex w-full flex-col gap-1 lg:hidden">
+      <ul className="ml-6 flex w-full flex-col gap-1 lg:hidden ">
         {renderItems}
       </ul>
     </React.Fragment>

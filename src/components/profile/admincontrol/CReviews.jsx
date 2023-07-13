@@ -33,6 +33,10 @@ const TABS = [
     value: "all",
   },
   {
+    label: "1S",
+    value: "1s",
+  },
+  {
     label: "2S",
     value: "2s",
   },
@@ -43,7 +47,11 @@ const TABS = [
   {
     label: "4S",
     value: "4s",
-  }
+  },
+  {
+    label: "5S",
+    value: "5s",
+  },
 ];
 
 const TABLE_HEAD = ["Review", "Rating", "User", "Series", "Edit", "Delete"];
@@ -178,12 +186,16 @@ export default function CReviews() {
   const tabClick = (tab) => {
     if (tab == "all") {
       setFilters(null);
-    }else if (tab == "2s"){
-      setFilters("&rating[lte]=2");
-    }else if (tab == "3s"){
-      setFilters("&rating[lte]=3");
-    }else if (tab == "4s"){
-      setFilters("&rating[lte]=4");
+    } else if (tab == "1s") {
+      setFilters("&rating=1");
+    } else if (tab == "2s") {
+      setFilters("&rating=2");
+    } else if (tab == "3s") {
+      setFilters("&rating=3");
+    } else if (tab == "4s") {
+      setFilters("&rating=4");
+    } else if (tab == "5s") {
+      setFilters("&rating=5");
     }
     setCurrentPage(1);
   };

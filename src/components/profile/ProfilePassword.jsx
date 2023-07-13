@@ -92,7 +92,7 @@ export default function ProfilePassword() {
             <div className="text-center">
               <Avatar
                 variant="circular"
-                alt="candice wu"
+                alt="user image"
                 className="border border-blue-500 p-0.5 w-[50%] h-[50%]"
                 src={userImg}
                 crossOrigin="anonymous"

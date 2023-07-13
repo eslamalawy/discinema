@@ -13,7 +13,6 @@ export const capitalizeFirstLetter = (string) => {
 export const getCookieValue = (name) =>
   document.cookie.match("(^|;)\\s*" + name + "\\s*=\\s*([^;]+)")?.pop() || "";
 
-  
 export const doesHttpOnlyCookieExist = (cookiename) => {
   var d = new Date();
   d.setTime(d.getTime() + 1000);
@@ -23,10 +22,68 @@ export const doesHttpOnlyCookieExist = (cookiename) => {
   return document.cookie.indexOf(cookiename + "=") == -1;
 };
 
-
 export const truncateString = (str, maxLength) => {
   if (str.length <= maxLength) {
     return str;
   }
   return str.slice(0, maxLength) + "...";
 };
+
+export const validGenres = [
+  "action",
+  "adventure",
+  "comedy",
+  "drama",
+  "fantasy",
+  "horror",
+  "mystery",
+  "romance",
+];
+
+export const validMediaType = ["episode", "movie"];
+
+export const validSources = ["telegram", "googledrive", "onedrive"];
+
+const validMimeTypesObj = {
+  opus: "video/ogg",
+  ogv: "video/ogg",
+  mp4: "video/mp4",
+  mov: "video/mp4",
+  m4v: "video/mp4",
+  mkv: "video/x-matroska",
+  m4a: "audio/mp4",
+  mp3: "audio/mpeg",
+  aac: "audio/aac",
+  caf: "audio/x-caf",
+  flac: "audio/flac",
+  oga: "audio/ogg",
+  wav: "audio/wav",
+  m3u8: "application/x-mpegURL",
+  mpd: "application/dash+xml",
+  jpg: "image/jpeg",
+  jpeg: "image/jpeg",
+  gif: "image/gif",
+  png: "image/png",
+  svg: "image/svg+xml",
+  webp: "image/webp",
+};
+
+export const validMimeTypes = [
+  { type: "opus,ogv", value: "video/ogg" },
+  { type: "mp4,mov,m4v", value: "video/mp4" },
+  { type: "mkv", value: "video/x-matroska" },
+  { type: "m4a", value: "audio/mp4" },
+  { type: "mp3", value: "audio/mpeg" },
+  { type: "aac", value: "audio/aac" },
+  { type: "caf", value: "audio/x-caf" },
+  { type: "flac", value: "audio/flac" },
+  { type: "oga", value: "audio/ogg" },
+  { type: "wav", value: "audio/wav" },
+  { type: "m3u8", value: "application/x-mpegURL" },
+  { type: "mpd", value: "application/dash+xml" },
+  { type: "jpg,jpeg", value: "image/jpeg" },
+  { type: "gif", value: "image/gif" },
+  { type: "png", value: "image/png" },
+  { type: "svg", value: "image/svg+xml" },
+  { type: "webp", value: "image/webp" },
+];

@@ -21,6 +21,8 @@ import CReviews from "./components/profile/admincontrol/CReviews";
 import CComments from "./components/profile/admincontrol/CComments";
 import CReply from "./components/profile/admincontrol/CReply";
 import Search from "./pages/Search";
+import Series from "./pages/Series";
+import SingleSerie from "./pages/SingleSerie";
 
 function App() {
   return (
@@ -56,10 +58,11 @@ function App() {
             <Route path="review" element={<CReviews />} />
             <Route path="comments" element={<CComments />} />
             <Route path="reply" element={<CReply />} />
-            
           </Route>
         </Route>
         <Route path="search" element={<Search />} />
+        <Route path="series" element={<Series />} />
+        <Route path="series/:seriesSlug" element={<SingleSerie />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
 

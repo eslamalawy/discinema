@@ -75,7 +75,7 @@ export default function Search() {
         <div className=" erc-footer-i h-[49.7vh] w-full" id="fadeElement"></div>
       )}
       {SearchBegin && (
-        <div className="grid grid-cols-2 gap-5">
+        <div className="grid lg:grid-cols-3 sm:grid-cols-2 gap-5 p-2">
           {Results.map((serie) => {
             return (
               <SearchCardContent

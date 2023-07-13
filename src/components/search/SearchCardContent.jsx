@@ -5,6 +5,7 @@ import { PlayIcon } from "@heroicons/react/24/outline";
 import $ from "jquery";
 import { truncateString } from "../../utils";
 import { useNavigate } from "react-router-dom";
+import { Tooltip } from "@material-tailwind/react";
 
 export default function SearchCardContent(props) {
   const { color, serie } = props;
@@ -25,7 +26,7 @@ export default function SearchCardContent(props) {
   const handleMouseLeave = () => {
     setIsHovered(false);
   };
-  const trancatedStr = truncateString(serie?.description, 700);
+  const trancatedStr = truncateString(serie?.description, 100);
   const navigateTo = useNavigate();
   return (
     <div
@@ -82,7 +83,9 @@ export default function SearchCardContent(props) {
                 })}
               </div>
 
-              <p className="mt-1 text-xs text-left">{trancatedStr}</p>
+              <Tooltip content={serie?.description}>
+                <p className="mt-1 text-xs text-left">{trancatedStr}</p>
+              </Tooltip>
             </div>
           </div>
           <div className="text-white min-h-[15%] bg-black flex items-center justify-evenly">

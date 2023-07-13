@@ -7,7 +7,6 @@ import {
   PencilIcon,
   TrashIcon,
   PlusIcon,
-  PaperAirplaneIcon,
 } from "@heroicons/react/24/solid";
 import {
   Card,
@@ -38,7 +37,7 @@ import {
   DialogFooter,
 } from "@material-tailwind/react";
 import RaiseAlert2 from "../../Alerts/RaiseAlert2";
-import { truncateString } from "../../../utils";
+import { truncateString, validMediaType } from "../../../utils";
 import { useNavigate, useParams } from "react-router-dom";
 import { CEpisodeAPI } from "../../../API/CEpisodeAPI";
 
@@ -68,7 +67,7 @@ const TABS = [
     value: "filler",
   },
 ];
-const validMediaType = ["episode", "movie"];
+
 
 const TABLE_HEAD = [
   "Episode",

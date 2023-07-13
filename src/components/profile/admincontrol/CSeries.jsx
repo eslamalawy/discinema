@@ -39,7 +39,7 @@ import {
 } from "@material-tailwind/react";
 import { CSeriesAPI } from "../../../API/CSeriesAPI";
 import RaiseAlert2 from "../../Alerts/RaiseAlert2";
-import { truncateString } from "../../../utils";
+import { truncateString, validGenres } from "../../../utils";
 import { useNavigate } from "react-router-dom";
 
 const TABS = [
@@ -56,16 +56,7 @@ const TABS = [
     value: "still",
   },
 ];
-const validGenres = [
-  "action",
-  "adventure",
-  "comedy",
-  "drama",
-  "fantasy",
-  "horror",
-  "mystery",
-  "romance",
-];
+
 const TABLE_HEAD = [
   "Series",
   "Seasons",

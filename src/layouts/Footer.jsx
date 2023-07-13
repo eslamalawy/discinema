@@ -6,9 +6,8 @@ const SITEMAP = [
   {
     title: "Navigation",
     links: [
-      ["Browse Popular", "/about"],
-      ["Browse New", "/careers"],
-      ["Anime", "/team"],
+      ["Home", "/"],
+      ["Series", "/series"],
     ],
   },
   {
