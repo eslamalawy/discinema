@@ -20,6 +20,7 @@ import CVideo from "./components/profile/admincontrol/CVideo";
 import CReviews from "./components/profile/admincontrol/CReviews";
 import CComments from "./components/profile/admincontrol/CComments";
 import CReply from "./components/profile/admincontrol/CReply";
+import Search from "./pages/Search";
 
 function App() {
   return (
@@ -58,7 +59,7 @@ function App() {
             
           </Route>
         </Route>
-
+        <Route path="search" element={<Search />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
 

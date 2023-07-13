@@ -1,4 +1,5 @@
 import axios from "axios";
+import { scryRenderedComponentsWithType } from "react-dom/test-utils";
 const url = process.env.REACT_APP_BASE_URL + "series";
 
 const GetSeriesCount = async (filter) => {
@@ -102,28 +103,43 @@ const CreateSeries = async (
   }
 };
 
-
-
 const DeleteSeries = async (id) => {
-    try {
-      const res = await axios({
-        method: "DELETE",
-        url: `${url}/${id}`,
-        withCredentials: true,
-      });
-  
-      if (res.data.status === "success") {
-        return res.data;
-      }
-    } catch (err) {
-      return err.response.data;
-    }
-  };
+  try {
+    const res = await axios({
+      method: "DELETE",
+      url: `${url}/${id}`,
+      withCredentials: true,
+    });
 
+    if (res.data.status === "success") {
+      return res.data;
+    }
+  } catch (err) {
+    return err.response.data;
+  }
+};
+
+const Search = async (searchKey) => {
+  try {
+    const res = await axios({
+      method: "POST",
+      data: { searchKey: searchKey },
+      url: `${url}/search`,
+    });
+
+    if (res.data.status === "success") {
+      return res.data;
+    }
+  } catch (err) {
+    return err.response.data;
+  }
+};
 
 export const CSeriesAPI = {
   GetSeriesCount,
   GetAllSeries,
   UpdateSeries,
-  CreateSeries,DeleteSeries
+  CreateSeries,
+  DeleteSeries,
+  Search,
 };
