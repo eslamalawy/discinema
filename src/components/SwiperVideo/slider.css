@@ -58,6 +58,7 @@
 }
 
 #bannerimg{
+  object-fit: fill;
   animation: fade 1s;
 }
 
@@ -66,21 +67,30 @@
 }
 
 /* videojs */
-.video-js {
+#bannervideo .video-js {
   position: unset !important;
   display: unset !important;
 }
 
-.video-js .vjs-error-display {
+#bannervideo .video-js .vjs-error-display {
   display: none !important;
 }
-.video-js .vjs-loading-spinner{
+#bannervideo .video-js .vjs-loading-spinner{
   display: none !important;
 }
 
-.video-js .vjs-tech {
+#bannervideo .video-js .vjs-tech {
   object-fit: cover;
 }
+
+#bannervideo .video-js .vjs-poster img {
+  object-fit: fill;
+}
+
+.swiper-pagination img {
+  width: 8.5rem;
+}
+
 
 /* media query for small logo and navigation size */
 @media (min-width: 0px) and (max-width: 399px) {
@@ -165,5 +175,4 @@
     top: 80%;
   }
 }
-
 

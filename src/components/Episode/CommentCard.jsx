@@ -226,7 +226,7 @@ export default function CommentCard({ comment }) {
               />
             </Button>
             <div>
-              {comment?.user._id === user._id ? (
+              {comment?.user._id === user?._id ? (
                 <div>
                   <Tooltip content="Edit Comment">
                     <IconButton

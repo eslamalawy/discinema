@@ -25,12 +25,12 @@ import {
   MenuHandler,
   MenuList,
   Menu,
+  tooltip,
 } from "@material-tailwind/react";
 import RaiseAlert2 from "../../Alerts/RaiseAlert2";
 import { useParams } from "react-router-dom";
 import { CVideoAPI } from "../../../API/CVideoAPI";
-import { validMimeTypes, validSources } from "../../../utils";
-
+import { truncateString, validMimeTypes, validSources } from "../../../utils";
 
 const TABS = [
   {
@@ -61,7 +61,7 @@ const TABLE_HEAD = [
 ];
 
 export default function CVideo() {
-  const { episodeId,seriesId } = useParams();
+  const { episodeId, seriesId } = useParams();
   const [TABLE_ROWS, setTABLE_ROWS] = useState([]);
   const [videosCount, setVideosCount] = useState(0);
   const [pageCount, setPageCount] = useState(0);
@@ -238,7 +238,7 @@ export default function CVideo() {
     if (episodeId) {
       handleOpen("Create Video", null, [], episodeId, null, null, "create");
     }
-    if(seriesId){
+    if (seriesId) {
       handleOpen("Create Video", null, [], null, seriesId, null, "create");
     }
   }, []);
@@ -683,13 +683,15 @@ export default function CVideo() {
                             >
                               {series}
                             </Typography>
-                            <Typography
-                              variant="small"
-                              color="blue-gray"
-                              className="font-normal"
-                            >
-                              {logo}
-                            </Typography>
+                            <Tooltip content={logo}>
+                              <Typography
+                                variant="small"
+                                color="blue-gray"
+                                className="font-normal"
+                              >
+                                {truncateString(logo, 50)}
+                              </Typography>
+                            </Tooltip>
                           </div>
                         )}
                       </div>
@@ -699,9 +701,11 @@ export default function CVideo() {
                   {/* vids array */}
                   <td className={classes}>
                     {vids?.map((video) => (
-                      <Typography variant="small" className="font-normal">
-                        {video?.link}
-                      </Typography>
+                      <Tooltip content={video?.link}>
+                        <Typography variant="small" className="font-normal">
+                          {truncateString(video?.link, 50)}
+                        </Typography>
+                      </Tooltip>
                     ))}
                   </td>
 

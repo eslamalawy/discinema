@@ -1,0 +1,13 @@
+/* videojs */
+#watchvideo .video-js {
+  position: unset !important;
+  display: unset !important;
+}
+
+#watchvideo .video-js .vjs-tech {
+  object-fit: contain;
+}
+
+#watchvideo .video-js .vjs-poster img {
+  object-fit: cover;
+}

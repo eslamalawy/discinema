@@ -163,7 +163,7 @@ export default function ReviewCard({ review }) {
               {review?.rating}
             </Typography>
             <div>
-              {review?.user._id === user._id ? (
+              {review?.user._id === user?._id ? (
                 <div>
                   <Tooltip content="Edit Review">
                     <IconButton

@@ -6,9 +6,10 @@ import { Navigation, Pagination } from "swiper";
 import "swiper/swiper-bundle.min.css";
 import CardContent from "./CardContent";
 import $ from "jquery";
+import { Typography } from "@material-tailwind/react";
 
 export default function SwiperAuto(props) {
-  const { color } = props;
+  const { color, Series, Title } = props;
   const swiperRef = useRef(null);
   const headingRef = useRef(null);
 
@@ -32,9 +33,9 @@ export default function SwiperAuto(props) {
 
   return (
     <div className="mt-7 mb-7">
-      <p ref={headingRef} className="font-bold text-[2rem] txt-heading">
-        New Added
-      </p>
+      <Typography ref={headingRef} className="font-bold text-[2rem] txt-heading">
+        {Title}
+      </Typography>
       <Swiper
         ref={swiperRef}
         pagination={{
@@ -57,24 +58,13 @@ export default function SwiperAuto(props) {
         }}
         className="swProgressContent h-fit "
       >
-        <SwiperSlide className="text-center flex justify-center items-center">
-          <CardContent color={color} />
-        </SwiperSlide>
-        <SwiperSlide className="text-center flex justify-center items-center">
-          <CardContent color={color} />
-        </SwiperSlide>
-        <SwiperSlide className="text-center flex justify-center items-center">
-          <CardContent color={color} />
-        </SwiperSlide>
-        <SwiperSlide className="text-center flex justify-center items-center">
-          <CardContent color={color} />
-        </SwiperSlide>
-        <SwiperSlide className="text-center flex justify-center items-center">
-          <CardContent color={color} />
-        </SwiperSlide>
-        <SwiperSlide className="text-center flex justify-center items-center">
-          <CardContent color={color} />
-        </SwiperSlide>
+        {Series.map((serie) => {
+          return (
+            <SwiperSlide className="text-center flex justify-center items-center">
+              <CardContent serie={serie} color={color} />
+            </SwiperSlide>
+          );
+        })}
       </Swiper>
     </div>
   );

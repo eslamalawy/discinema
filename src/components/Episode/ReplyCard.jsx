@@ -154,7 +154,7 @@ export default function ReplyCard({ reply }) {
           </div>
 
           <div>
-            {reply?.user._id === user._id ? (
+            {reply?.user._id === user?._id ? (
               <div>
                 <Tooltip content="Edit Reply">
                   <IconButton

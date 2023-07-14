@@ -115,3 +115,23 @@ export function getRandomColor() {
   const randomIndex = Math.floor(Math.random() * colors.length);
   return colors[randomIndex];
 }
+
+export function getRandomHexColor() {
+  const colors = [
+    "#db2197",
+    "#653233",
+    "#d97706",
+    "#ea580c",
+    "#57534e",
+    "#4d7c0f",
+    "#a16207",
+    "#047857",
+    "#1d4ed8",
+    "#7e22ce",
+    "#be185d",
+    "#e11d48",
+  ];
+
+  const randomIndex = Math.floor(Math.random() * colors.length);
+  return colors[randomIndex];
+}

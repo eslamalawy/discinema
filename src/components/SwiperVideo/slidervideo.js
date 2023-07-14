@@ -10,6 +10,7 @@ import {
 } from "swiper";
 import "swiper/swiper-bundle.min.css";
 import "./slider.css";
+import { useLocation } from "react-router-dom";
 import {
   SpeakerWaveIcon,
   SpeakerXMarkIcon,
@@ -19,11 +20,11 @@ import { SamVid } from "./SampleVideojs/Sample";
 import $ from "jquery";
 import videojs from "video.js";
 
-export const SliderVideo = ({ slides }) => {
+export const SliderVideo = ({ BannerSeries }) => {
+  const location = useLocation();
   // handel pagination Bullets to show the logo/
   const renderBullet = (index, className) => {
-    //const slideTitle = slides[index].title;
-    const smalllogo = slides[index].smalllogo;
+    const smalllogo = BannerSeries[index]?.bannerVideo[0].logo;
     return `<span class="${className}"><img src="${smalllogo}"/></span>`;
   };
 
@@ -66,7 +67,7 @@ export const SliderVideo = ({ slides }) => {
 
     const activeSlideIndex = swiperInstance.activeIndex;
     const activeSlide = swiperInstance.slides[activeSlideIndex];
-    const myslide_data = slides[swiperInstance.activeIndex];
+    const myslide_data = BannerSeries[swiperInstance.activeIndex];
     const myimage_ref = activeSlide.querySelector(".swiper-slide #bannerimg");
     const myvideo_ref = activeSlide.querySelector(".swiper-slide #bannervideo");
     const myInsideContainer = activeSlide.querySelector(
@@ -82,27 +83,40 @@ export const SliderVideo = ({ slides }) => {
     // Pause the player when the user scrolls
     $(window).on("scroll", function () {
       if (this.scrollY === 0) {
-        $(".navBar-itm").addClass("opacity-[0.5]");
-        players.map((player, index) => {
-          player.pause();
-        });
+        //console.log("asd called",location.pathname)
+        if (location.pathname === "/" || location.pathname === "/home") {
+          $(".navBar-itm").addClass("opacity-[0.5]");
+        }
+        try {
+          players.map((player, index) => {
+            player.pause();
+          });
+        } catch (err) {
+          $(".navBar-itm").removeClass("opacity-[0.5]");
+          //console.log(err);
+        }
+
         swiperInstance.slideTo(0, 500);
       } else if (this.scrollY > swiperInstance.height / 2) {
         $(".navBar-itm").removeClass("opacity-[0.5]");
-        players.map((player, index) => {
-          player.pause();
-          player.hide();
-        });
+        try {
+          players.map((player, index) => {
+            player.pause();
+            player.hide();
+          });
+        } catch (err) {
+          //console.log(err);
+        }
         $(myvideo_ref).hide();
         $(myimage_ref).show();
       }
     });
 
     //addding the url & poster to the video
-    monplayer.poster(myslide_data?.image);
+    monplayer.poster(myslide_data?.images.posterWide[0].source);
     monplayer.src({
-      type: myslide_data?.VideoType,
-      src: myslide_data?.videoSrc,
+      src: myslide_data?.bannerVideo[0].vids[0].link,
+      type: myslide_data?.bannerVideo[0].vids[0].mimeType,
     });
 
     monplayer.off("error");
@@ -142,12 +156,16 @@ export const SliderVideo = ({ slides }) => {
         $(myvideo_ref).show();
 
         //checking other players
-        players.map((player, index) => {
-          if (!player.paused()) {
-            //console.log(index, "player is working must stop it");
-            player.pause();
-          }
-        });
+        try {
+          players.map((player, index) => {
+            if (!player.paused()) {
+              //console.log(index, "player is working must stop it");
+              player.pause();
+            }
+          });
+        } catch (error) {
+          //console.log(error);
+        }
         monplayer.show();
         monplayer.play("unmuted");
         videoPlayStatus = VIDEO_PLAYING_STATE.PLAYING;
@@ -196,10 +214,14 @@ export const SliderVideo = ({ slides }) => {
       // });
 
       swiperInstance.on("beforeSlideChangeStart", function () {
-        players.map((player, index) => {
-          player.pause();
-          player.hide();
-        });
+        try {
+          players.map((player, index) => {
+            player.pause();
+            player.hide();
+          });
+        } catch (error) {
+          //console.log(error);
+        }
       });
 
       if (swiperInstance.activeIndex === 0 && !done_change) {
@@ -216,10 +238,14 @@ export const SliderVideo = ({ slides }) => {
 
       //swiperInstance.on("slideChange", handelSlideOnChange);
       swiperInstance.on("slideChange", () => {
-        players.map((player, index) => {
-          player.pause();
-          player.hide();
-        });
+        try {
+          players.map((player, index) => {
+            player.pause();
+            player.hide();
+          });
+        } catch (error) {
+          //console.log(error);
+        }
         handelSlideOnChange(
           swiperInstance,
           videoPlayStatus,
@@ -240,23 +266,27 @@ export const SliderVideo = ({ slides }) => {
     const activeIndex = swiperRef.current.swiper.activeIndex;
     const activePlayer = players[activeIndex];
     let old_time = activePlayer.currentTime();
-    players.map((player, index) => {
-      player.hide();
-      player.muted(!isMutedClicked);
-      if (index === activeIndex) {
-        if (isMutedClicked) {
-          player.play("unmuted");
-          player.currentTime(old_time);
-          player.show();
+    try {
+      players.map((player, index) => {
+        player.hide();
+        player.muted(!isMutedClicked);
+        if (index === activeIndex) {
+          if (isMutedClicked) {
+            player.play("unmuted");
+            player.currentTime(old_time);
+            player.show();
+          } else {
+            player.play("muted");
+            player.currentTime(old_time);
+            player.show();
+          }
         } else {
-          player.play("muted");
-          player.currentTime(old_time);
-          player.show();
+          player.pause();
         }
-      } else {
-        player.pause();
-      }
-    });
+      });
+    } catch (error) {
+      //console.log(error);
+    }
   }, [isMutedClicked]);
 
   return (
@@ -285,17 +315,19 @@ export const SliderVideo = ({ slides }) => {
         shadowScale: 0.94,
       }}
     >
-      {slides.map((slide) => (
-        <SwiperSlide key={slide?.image}>
+      {BannerSeries.map((serie) => (
+        <SwiperSlide key={serie?._id}>
           {/* right */}
           <div className="swiper-inside-container">
             <div className="group flex flex-col w-1/2 opacity-[0.4] hover:opacity-[1] ">
               <img
                 className="w-1/2 group-hover:scale-[120%] group-hover:mb-[20%] trans-all origin-top-left"
-                src={slide?.biglogo}
+                src={serie?.bannerVideo[0].logo}
                 alt="img"
               />
-              <p className="trans-all text-white text-sm">{slide?.subTitle}</p>
+              <p className="trans-all text-white text-sm">
+                {serie?.description}
+              </p>
               <button
                 onClick={btn_watch}
                 className="mt-3 flex items-center justify-center rounded  hover:bg-[#da0e5c] bg-[#0c0c0c60] text-white p-2 border border-[#da0e5c]"
@@ -318,13 +350,16 @@ export const SliderVideo = ({ slides }) => {
             </button>
           </div>
           <img
-            src={slide?.image}
+            src={serie?.images.posterWide[0].source}
             id="bannerimg"
             className="h-full w-full"
-            alt={slide?.title}
+            alt={serie?.name}
           />
 
-          <SamVid vSrc={slide?.videoSrc} vType={slide?.VideoType} />
+          <SamVid
+            vSrc={serie?.bannerVideo[0].vids[0].link}
+            vType={serie?.bannerVideo[0].vids[0].mimeType}
+          />
         </SwiperSlide>
       ))}
 
