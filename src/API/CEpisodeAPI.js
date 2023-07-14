@@ -134,10 +134,66 @@ const DeleteEpisode = async (id) => {
   }
 };
 
+const getSingleEpisode = async (id) => {
+  try {
+    const res = await axios({
+      method: "GET",
+      url: `${url}/${id}`,
+    });
+
+    if (res.data.status === "success") {
+      return res.data;
+    }
+  } catch (err) {
+    return err.response.data;
+  }
+};
+
+const createCommentOnEpisode = async (id, comment) => {
+  try {
+    const res = await axios({
+      method: "POST",
+      url: `${url}/${id}/comments`,
+      data: {
+        comment,
+      },
+      withCredentials: true,
+    });
+
+    if (res.data.status === "success") {
+      return res.data;
+    }
+  } catch (err) {
+    return err.response.data;
+  }
+};
+
+const createReplyOnCommentOfEpisode = async (id, comment, reply) => {
+  try {
+    const res = await axios({
+      method: "POST",
+      url: `${url}/${id}/comment/${comment}/reply`,
+      data: {
+        reply,
+      },
+      withCredentials: true,
+    });
+
+    if (res.data.status === "success") {
+      return res.data;
+    }
+  } catch (err) {
+    return err.response.data;
+  }
+};
+
 export const CEpisodeAPI = {
   GetEpisodeCount,
   GetAllEpisodes,
   UpdateEpisode,
   CreateEpisode,
   DeleteEpisode,
+  getSingleEpisode,
+  createCommentOnEpisode,
+  createReplyOnCommentOfEpisode
 };

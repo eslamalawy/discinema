@@ -24,7 +24,7 @@ import { MainContext } from "../context/MainContext";
 
 export default function SingleSerie() {
   const { seriesSlug } = useParams();
-  const { user } = useContext(MainContext);
+  const { user, review } = useContext(MainContext);
   const [isLoading, setIsLoading] = useState(true);
   const [Series, setSeries] = useState({});
   const [ActiveSeason, setActiveSeason] = useState();
@@ -45,14 +45,14 @@ export default function SingleSerie() {
   };
 
   useEffect(() => {
-    async function fetchUser() {
+    async function fetchData() {
       const res = await CSeriesAPI.GetSeriesCount(`&slug=${seriesSlug}`);
       if (res?.status === "success") {
         const sId = res.data.data[0]._id;
         fetchSerie(sId);
       }
     }
-    fetchUser();
+    fetchData();
   }, []);
 
   const fetchSeason = async (id) => {
@@ -62,6 +62,10 @@ export default function SingleSerie() {
       //console.log(res.data.data);
     }
   };
+
+  useEffect(() => {
+    fetchSerie(Series._id);
+  }, [review]);
 
   useEffect(() => {
     fetchSeason(ActiveSeason);

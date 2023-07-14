@@ -110,19 +110,6 @@ export default function MePage() {
                 Change Password
               </ListItem>
 
-              {!Admin && (
-                <ListItem
-                  onClick={() => {
-                    navigate("/me/reviews");
-                  }}
-                >
-                  <ListItemPrefix>
-                    <StarIcon className="h-5 w-5" />
-                  </ListItemPrefix>
-                  My Reviews
-                </ListItem>
-              )}
-
               {Admin && (
                 <div className=" mt-2">
                   <hr />

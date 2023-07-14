@@ -23,6 +23,7 @@ import CReply from "./components/profile/admincontrol/CReply";
 import Search from "./pages/Search";
 import Series from "./pages/Series";
 import SingleSerie from "./pages/SingleSerie";
+import SingleEpisode from "./pages/SingleEpisode";
 
 function App() {
   return (
@@ -63,6 +64,8 @@ function App() {
         <Route path="search" element={<Search />} />
         <Route path="series" element={<Series />} />
         <Route path="series/:seriesSlug" element={<SingleSerie />} />
+        
+        <Route path="episode/:episodeSlug" element={<SingleEpisode />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
 
