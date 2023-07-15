@@ -25,7 +25,7 @@ export const SliderVideo = ({ BannerSeries }) => {
   const location = useLocation();
   // handel pagination Bullets to show the logo/
   const renderBullet = (index, className) => {
-    const smalllogo = BannerSeries[index]?.bannerVideo[0].logo;
+    const smalllogo = BannerSeries[index]?.bannerVideo[0]?.logo;
     return `<span class="${className}"><img src="${smalllogo}"/></span>`;
   };
 
@@ -117,8 +117,8 @@ export const SliderVideo = ({ BannerSeries }) => {
     //addding the url & poster to the video
     monplayer.poster(myslide_data?.images.posterWide[0].source);
     monplayer.src({
-      src: myslide_data?.bannerVideo[0].vids[0].link,
-      type: myslide_data?.bannerVideo[0].vids[0].mimeType,
+      src: myslide_data?.bannerVideo[0]?.vids[0]?.link,
+      type: myslide_data?.bannerVideo[0]?.vids[0]?.mimeType,
     });
 
     monplayer.off("error");
@@ -324,7 +324,7 @@ export const SliderVideo = ({ BannerSeries }) => {
             <div className="group flex flex-col w-1/2 opacity-[0.4] hover:opacity-[1] ">
               <img
                 className="w-1/2 group-hover:scale-[120%] group-hover:mb-[20%] trans-all origin-top-left"
-                src={serie?.bannerVideo[0].logo}
+                src={serie?.bannerVideo[0]?.logo}
                 alt="img"
               />
               <p className="trans-all text-white text-sm">
@@ -361,8 +361,8 @@ export const SliderVideo = ({ BannerSeries }) => {
           />
 
           <SamVid
-            vSrc={serie?.bannerVideo[0].vids[0].link}
-            vType={serie?.bannerVideo[0].vids[0].mimeType}
+            vSrc={serie?.bannerVideo[0]?.vids[0]?.link}
+            vType={serie?.bannerVideo[0]?.vids[0]?.mimeType}
           />
         </SwiperSlide>
       ))}

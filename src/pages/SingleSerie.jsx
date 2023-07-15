@@ -40,7 +40,7 @@ export default function SingleSerie() {
     const res2 = await CSeriesAPI.getSingleSeries(sId);
     if (res2?.status === "success") {
       setSeries(res2.data.data);
-      setActiveSeason(res2.data.data.seasons[0]._id);
+      setActiveSeason(res2.data.data.seasons[0]?._id);
       setIsLoading(false);
     }
   };
