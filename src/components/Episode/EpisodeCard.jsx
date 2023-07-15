@@ -73,6 +73,7 @@ export default function EpisodeCard(props) {
             </div>
           </div>
           <div className="text-white min-h-[20%] bg-black flex items-center justify-evenly">
+          <Tooltip content="Watch">
             <a
               className="cursor-pointer"
               onClick={() => {
@@ -81,6 +82,7 @@ export default function EpisodeCard(props) {
             >
               <PlayIcon className="w-7 text-amber-600" />
             </a>
+            </Tooltip>
           </div>
         </div>
         <div className="flex flex-col">

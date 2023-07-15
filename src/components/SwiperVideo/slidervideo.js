@@ -10,7 +10,7 @@ import {
 } from "swiper";
 import "swiper/swiper-bundle.min.css";
 import "./slider.css";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
   SpeakerWaveIcon,
   SpeakerXMarkIcon,
@@ -21,6 +21,7 @@ import $ from "jquery";
 import videojs from "video.js";
 
 export const SliderVideo = ({ BannerSeries }) => {
+  const navigateTo = useNavigate();
   const location = useLocation();
   // handel pagination Bullets to show the logo/
   const renderBullet = (index, className) => {
@@ -37,8 +38,9 @@ export const SliderVideo = ({ BannerSeries }) => {
   };
 
   // watch handeling
-  const btn_watch = () => {
+  const btn_watch = (slug) => {
     //console.log("btn watch clicked");
+    navigateTo(`/series/${slug}`);
   };
 
   //handel video showing
@@ -329,7 +331,9 @@ export const SliderVideo = ({ BannerSeries }) => {
                 {serie?.description}
               </p>
               <button
-                onClick={btn_watch}
+                onClick={() => {
+                  btn_watch(serie?.slug);
+                }}
                 className="mt-3 flex items-center justify-center rounded  hover:bg-[#da0e5c] bg-[#0c0c0c60] text-white p-2 border border-[#da0e5c]"
               >
                 <PlayIcon className="h-5 w-5" /> Watch Now

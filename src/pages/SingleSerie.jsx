@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import PaddingTop from "../components/PaddingTop";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { CSeriesAPI } from "../API/CSeriesAPI";
 import {
   Button,
@@ -23,6 +23,7 @@ import RaiseAlert2 from "../components/Alerts/RaiseAlert2";
 import { MainContext } from "../context/MainContext";
 
 export default function SingleSerie() {
+  const navigateTo = useNavigate();
   const { seriesSlug } = useParams();
   const { user, review } = useContext(MainContext);
   const [isLoading, setIsLoading] = useState(true);
@@ -48,8 +49,14 @@ export default function SingleSerie() {
     async function fetchData() {
       const res = await CSeriesAPI.GetSeriesCount(`&slug=${seriesSlug}`);
       if (res?.status === "success") {
-        const sId = res.data.data[0]._id;
-        fetchSerie(sId);
+        if (res.data.data.length > 0) {
+          const sId = res.data.data[0]._id;
+          fetchSerie(sId);
+        } else {
+          navigateTo("/error");
+        }
+      } else {
+        navigateTo("/error");
       }
     }
     fetchData();

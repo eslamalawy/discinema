@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import PaddingTop from "../components/PaddingTop";
 import { Drawer, IconButton, Typography } from "@material-tailwind/react";
-import { XMarkIcon, EyeIcon } from "@heroicons/react/24/outline";
+import { XMarkIcon, EyeIcon, FilmIcon } from "@heroicons/react/24/outline";
 import { Card, List, ListItem, ListItemPrefix } from "@material-tailwind/react";
 import { useNavigate, Outlet } from "react-router-dom";
 import { MainContext } from "../context/MainContext";
@@ -87,6 +87,19 @@ export default function MePage() {
                 </ListItemPrefix>
                 Profile
               </ListItem>
+
+              {!Admin && (
+                <ListItem
+                  onClick={() => {
+                    navigate("/me/watchlist");
+                  }}
+                >
+                  <ListItemPrefix>
+                    <FilmIcon className="h-5 w-5" />
+                  </ListItemPrefix>
+                  My Watch List
+                </ListItem>
+              )}
 
               <ListItem
                 onClick={() => {
@@ -206,6 +219,17 @@ export default function MePage() {
                       <WrenchScrewdriverIcon className="h-5 w-5" />
                     </ListItemPrefix>
                     Control Replies
+                  </ListItem>
+
+                  <ListItem
+                    onClick={() => {
+                      navigate("/me/admin/watchlist");
+                    }}
+                  >
+                    <ListItemPrefix>
+                      <WrenchScrewdriverIcon className="h-5 w-5" />
+                    </ListItemPrefix>
+                    Control Watch Lists
                   </ListItem>
                 </div>
               )}

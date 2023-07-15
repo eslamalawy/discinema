@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, useContext } from "react";
 import "./style.css";
 import { StarIcon, PlusIcon } from "@heroicons/react/24/solid";
 import { PlayIcon } from "@heroicons/react/24/outline";
@@ -6,11 +6,48 @@ import $ from "jquery";
 import { truncateString } from "../../utils";
 import { useNavigate } from "react-router-dom";
 import { Tooltip } from "@material-tailwind/react";
+import RaiseAlert2 from "../Alerts/RaiseAlert2";
+import { CWatchlistAPI } from "../../API/CWatchlistAPI";
+import { MainContext } from "../../context/MainContext";
 
 export default function SearchCardContent(props) {
+  const { user } = useContext(MainContext);
   const { color, serie } = props;
   const headingRef = useRef(null);
   const [isHovered, setIsHovered] = useState(false);
+  const [showAlert, setshowAlert] = useState(null);
+  const [status, setStatus] = useState(null);
+  const [message, setMessage] = useState(null);
+
+  const handelAddWatchList = async (series_id) => {
+    if (series_id && user) {
+      const res = await CWatchlistAPI.CreateWatchlist(series_id);
+      // console.log(res);
+      if (res?.status === "success") {
+        setStatus(res.status);
+        setMessage("Added Successfully!");
+        setshowAlert(true);
+      } else {
+        setStatus(res.status);
+        setMessage(res.message);
+        setshowAlert(true);
+      }
+    } else {
+      setStatus("fail");
+      setMessage("login first!");
+      setshowAlert(true);
+    }
+  };
+  useEffect(() => {
+    if (showAlert) {
+      const timer = setTimeout(() => {
+        setshowAlert(false);
+      }, 2400);
+      return () => {
+        clearTimeout(timer);
+      };
+    }
+  }, [showAlert]);
 
   useEffect(() => {
     if (color && headingRef) {
@@ -28,6 +65,7 @@ export default function SearchCardContent(props) {
   };
   const trancatedStr = truncateString(serie?.description, 100);
   const navigateTo = useNavigate();
+
   return (
     <div
       className="relative"
@@ -89,17 +127,28 @@ export default function SearchCardContent(props) {
             </div>
           </div>
           <div className="text-white min-h-[15%] bg-black flex items-center justify-evenly">
-            <a href="/add/watchlist">
-              <PlusIcon className="w-7 text-amber-600" />
-            </a>
-            <a
-              className="cursor-pointer"
-              onClick={() => {
-                navigateTo(`/series/${serie?.slug}`);
-              }}
-            >
-              <PlayIcon className="w-7 text-amber-600" />
-            </a>
+            {showAlert && <RaiseAlert2 state={status} message={message} />}
+            <Tooltip content="Add To WatchList">
+              <a
+                className="cursor-pointer"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handelAddWatchList(serie?._id);
+                }}
+              >
+                <PlusIcon className="w-7 text-amber-600" />
+              </a>
+            </Tooltip>
+            <Tooltip content="Watch">
+              <a
+                className="cursor-pointer"
+                onClick={() => {
+                  navigateTo(`/series/${serie?.slug}`);
+                }}
+              >
+                <PlayIcon className="w-7 text-amber-600" />
+              </a>
+            </Tooltip>
           </div>
         </div>
         <div className="flex flex-col">

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import slides from "../components/SwiperVideo/mock.json";
 import { SliderVideo } from "../components/SwiperVideo/slidervideo";
 import SwiperAuto from "../components/SwiperContent/SwiperAuto";
 import { getRandomHexColor } from "../utils";

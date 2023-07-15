@@ -20,6 +20,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { MainContext } from "../../context/MainContext";
 import { UserAPI } from "../../API/UserAPI";
+import { FilmIcon } from "@heroicons/react/24/solid";
 
 // profile menu component
 const profileMenuItems = [
@@ -27,6 +28,11 @@ const profileMenuItems = [
     label: "My Profile",
     icon: UserCircleIcon,
     url: "/me",
+  },
+  {
+    label: "My Watch List",
+    icon: FilmIcon,
+    url: "/me/watchlist",
   },
   {
     label: "Edit Profile",
@@ -67,6 +73,7 @@ export default function ProfileMenu() {
       setIsLogedIn(true);
       let pitems = [...profileMenuItems];
       if (user.role == "admin") {
+        pitems = pitems.filter((el) => el.label != "My Watch List");
         pitems.unshift({
           label: "Admin Control",
           icon: WrenchScrewdriverIcon,

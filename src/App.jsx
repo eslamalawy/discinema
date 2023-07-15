@@ -24,6 +24,8 @@ import Search from "./pages/Search";
 import Series from "./pages/Series";
 import SingleSerie from "./pages/SingleSerie";
 import SingleEpisode from "./pages/SingleEpisode";
+import MyWatchList from "./components/profile/MyWatchList";
+import CWatchList from "./components/profile/admincontrol/CWatchList";
 
 function App() {
   return (
@@ -44,6 +46,7 @@ function App() {
         <Route path="me" element={<MePage />}>
           <Route path="" element={<Profile />} />
           <Route path="edit" element={<ProfileEdit />} />
+          <Route path="watchlist" element={<MyWatchList />} />
           <Route path="password" element={<ProfilePassword />} />
 
           <Route path="admin" element={<CDefault />}>
@@ -59,6 +62,8 @@ function App() {
             <Route path="review" element={<CReviews />} />
             <Route path="comments" element={<CComments />} />
             <Route path="reply" element={<CReply />} />
+            <Route path="watchlist" element={<CWatchList />} />
+            
           </Route>
         </Route>
         <Route path="search" element={<Search />} />

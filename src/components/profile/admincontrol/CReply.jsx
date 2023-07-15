@@ -207,7 +207,7 @@ export default function CReply() {
             >
               Comment ID
             </Typography>
-            <Input disabled label="Episode ID" value={DialogComment} />
+            <Input disabled label="Comment ID" value={DialogComment} />
             <Typography
               variant="small"
               color="blue-gray"

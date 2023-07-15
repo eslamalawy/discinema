@@ -7,6 +7,7 @@ export default function MainProvider(props) {
   const [reply, setReply] = useState(null);
   const [comment, setComment] = useState(null);
   const [review, setReview] = useState(null);
+  const [WatchList, setWatchList] = useState(null);
 
   //returning values
   let myval = {
@@ -18,6 +19,8 @@ export default function MainProvider(props) {
     setComment,
     review,
     setReview,
+    WatchList,
+    setWatchList,
   };
 
   return (
