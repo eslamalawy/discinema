@@ -52,8 +52,7 @@ export default function SingleEpisode() {
         poster: res2.data.data?.images.thumbnail[0].source,
         sources: [
           {
-            //src: res2.data.data?.video[0]?.vids[0].link,
-            src: "https://rr5---sn-un57snee.googlevideo.com/videoplayback?expire=1689360831&ei=X0WxZNOcBcLxqAG1lIiABw&ip=2001%3Ab011%3Aa400%3Ac9a5%3Ac4c0%3A6954%3A51df%3A9a27&id=o-AEcxqjIBUrMV9Xhg2nNZhZdlumL_MoKvNIpLDiRkJPRj&itag=22&source=youtube&requiressl=yes&spc=Ul2Sq8L8aI7LK0uyV0_OMByEvLjL5dfcYfMkDCVPHQ&vprv=1&svpuc=1&mime=video%2Fmp4&ns=-ArbXssTon5Z3RgMmNvirnsO&cnr=14&ratebypass=yes&dur=56.749&lmt=1682183014235436&fexp=24007246,24350018&beids=24350018&c=WEB&txp=6218224&n=u8Rds3Febnut6w&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cspc%2Cvprv%2Csvpuc%2Cmime%2Cns%2Ccnr%2Cratebypass%2Cdur%2Clmt&sig=AOq0QJ8wRgIhANdYcksdgboLyaCQpi_W4HI9sV0xEn77bOgaMQxoSNRhAiEAxFWPSShnb45W6wQt-2faI6iUsGThcwkV5B490_yFWTw%3D&title=%40captainrobbiesracing6796%20and%20Dom%20getting%20a%20good%20race%20in%20at%20Pageland%20dragway&redirect_counter=1&rm=sn-ipoxu-umbk76&req_id=a35bbf443dd3a3ee&cms_redirect=yes&cmsv=e&ipbypass=yes&mh=Gu&mm=29&mn=sn-un57snee&ms=rdu&mt=1689338733&mv=m&mvi=5&pl=51&lsparams=ipbypass,mh,mm,mn,ms,mv,mvi,pl&lsig=AG3C_xAwRQIgSVMXjuQuYUYjOCwHcgATCjI1C3URytCJq8Pcu7laELICIQDhU7gkfhAUv2jpgOp1NxfHD15QFQbwE3djKpdBwKAvEA%3D%3D",
+            src: res2.data.data?.video[0]?.vids[0].link,
             type: res2.data.data?.video[0]?.vids[0].mimeType,
           },
         ],
