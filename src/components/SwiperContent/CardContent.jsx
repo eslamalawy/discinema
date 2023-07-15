@@ -85,7 +85,7 @@ export default function CardContent(props) {
           } absolute top-0 left-0 w-full h-full bg-gray-800 bg-opacity-80`}
         >
           <div className="flex flex-col text-white mt-1 min-h-[85%]">
-            <p className=" opacity-1">{serie?.name}</p>
+            <p className=" opacity-1">{truncateString(serie?.name, 17)}</p>
             <div className="flex justify-center">
               <StarIcon className="w-6 text-amber-600" />
               <p className="mt-auto font-bold">{serie?.ratingsAverage}</p>
@@ -148,7 +148,7 @@ export default function CardContent(props) {
           />
           <div className="flex flex-col items-start">
             <Typography ref={headingRef} className="text-sm font-bold">
-              {serie?.name}
+            {truncateString(serie?.name, 20)}
             </Typography>
             <p className="text-sm text-gray-600">Sub - Arabic</p>
           </div>
