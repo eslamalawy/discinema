@@ -58,7 +58,7 @@ export default function MePage() {
         placement="left"
         open={openLeft}
         onClose={closeDrawerLeft}
-        className=""
+        className="overflow-y-scroll"
       >
         <div className="pt-4 pr-4 pl-4 mb-6 flex items-center justify-between">
           <Typography variant="h5" color="blue-gray">
@@ -73,10 +73,10 @@ export default function MePage() {
           </IconButton>
         </div>
 
-        <div>
+        <div >
           {/* Content */}
-          <Card className="rounded-none w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5">
-            <List>
+          <Card className=" rounded-none w-full max-w-[20rem] p-4 shadow-xl shadow-blue-gray-900/5">
+            <List >
               <ListItem
                 onClick={() => {
                   navigate("/me");
