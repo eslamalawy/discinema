@@ -37,3 +37,18 @@
 .changa-one {
   font-family: "Changa One", cursive;
 }
+
+
+/* Scroll bar track */
+body::-webkit-scrollbar {
+  width: 0.5rem;
+}
+ 
+body::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+ 
+body::-webkit-scrollbar-thumb {
+  background-color: rgb(92, 44, 155);
+  outline: 1px solid slategrey;
+}
