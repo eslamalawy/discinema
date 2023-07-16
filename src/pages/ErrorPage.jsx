@@ -6,9 +6,9 @@ export default function ErrorPage() {
     <div>
       <PaddingTop />
 
-      <div className="h-[50vh] flex items-center justify-center">
-        <div>
-          <img style={{ height: 380 }} src={ErrorImg} />
+      <div className="h-screen flex items-center justify-center">
+        <div className="h-1/2 w-1/2" >
+          <img src={ErrorImg} />
         </div>
       </div>
     </div>
